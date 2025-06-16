@@ -6,11 +6,11 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:26:15 by vafavard          #+#    #+#             */
-/*   Updated: 2025/06/16 13:34:48 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/06/16 15:29:28 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx/mlx.h"
+#include <so_long.h>
 
 #define	WINDOW_WIDTH 1920
 #define WINDOW_HEIGHT 1080
