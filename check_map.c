@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:43:25 by vafavard          #+#    #+#             */
-/*   Updated: 2025/06/22 03:51:50 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/06/22 04:35:13 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ int		check_top_bot(char **map, char *file);
 int		check_sides(char **map);
 int		check_name(char *file);
 int		check_valide_cases(char **map);
+void	flood_fill(char **dup_map, int player_y, int player_x);
+int		check_flood_fill(char **dup_map);
 
 //a faire : gerer les messages d'erreurs explicites
-//a faire : verifier qu'il existe un chemin -> floofill ?
-//un fois floodfill fait fonction qui check si on peut aller partout (check s'il reste des C ou un E)
 
 int nb_line(char *file)
 {
@@ -189,4 +189,35 @@ int		check_valide_cases(char **map)
 	if (nb_p != 1 || nb_e != 1)
 			return (0);
 		return (1);
+}
+
+void	flood_fill(char **dup_map, int player_y, int player_x)
+{
+	if (dup_map[player_y][player_x] == '1' || dup_map[player_y][player_x] == 'F')
+		return;
+	dup_map[player_y][player_x] = 'F';
+	flood_fill(dup_map, player_y, player_x + 1);
+	flood_fill(dup_map, player_y , player_x - 1);
+	flood_fill(dup_map, player_y + 1, player_x);
+	flood_fill(dup_map, player_y - 1, player_x);
+}
+
+int check_flood_fill(char **dup_map)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (dup_map[y])
+	{
+		x = 0;
+		while (dup_map[y][x])
+		{
+			if (dup_map[y][x] != '1' && dup_map[y][x] != 'F')
+				return (0);
+			x++;
+		}
+		y++;
+	}
+	return (1);
 }
