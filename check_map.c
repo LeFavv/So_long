@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:43:25 by vafavard          #+#    #+#             */
-/*   Updated: 2025/06/22 04:35:13 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/06/22 04:43:47 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ int		check_name(char *file);
 int		check_valide_cases(char **map);
 void	flood_fill(char **dup_map, int player_y, int player_x);
 int		check_flood_fill(char **dup_map);
+
+//un message d'erreur si map est pas rectangle
+//message d'erreur si chaque cote ne sont pas que des 1
+//message d'erreur pour le nom
+//message d'erreur pour les cases si c'est pas valide
+//message d'erreur si pas de chemin valide
 
 //a faire : gerer les messages d'erreurs explicites
 
