@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:43:25 by vafavard          #+#    #+#             */
-/*   Updated: 2025/06/22 03:32:35 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/06/22 03:51:50 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int		check_valide_cases(char **map);
 
 //a faire : gerer les messages d'erreurs explicites
 //a faire : verifier qu'il existe un chemin -> floofill ?
+//un fois floodfill fait fonction qui check si on peut aller partout (check s'il reste des C ou un E)
 
 int nb_line(char *file)
 {
