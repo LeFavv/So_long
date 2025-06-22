@@ -1,9 +1,0 @@
-### CHECK MAP ###
-
-* Verifier que la ligne du haut et du bas ne soit constituees que de 1 
-* Verifier les bords
-* Verifier qu'il n'y ait qu'un seul P
-* Verifier que la map soit au format .ber
-* Verifier qu'il y ait une sortie 
-* Verifier qu'il y ait un chemin (floodfill ???)
-

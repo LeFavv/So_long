@@ -6,16 +6,23 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:43:25 by vafavard          #+#    #+#             */
-/*   Updated: 2025/06/16 15:45:04 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/06/22 03:32:35 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <so_long.h>
+#include "so_long.h"
 
 int		nb_line(char *file);
 char	**load_map(char *file);
 void	free_map(char **map);
 int		check_rectangle(char **map);
+int		check_top_bot(char **map, char *file);
+int		check_sides(char **map);
+int		check_name(char *file);
+int		check_valide_cases(char **map);
+
+//a faire : gerer les messages d'erreurs explicites
+//a faire : verifier qu'il existe un chemin -> floofill ?
 
 int nb_line(char *file)
 {
@@ -97,7 +104,7 @@ int	check_top_bot(char **map, char *file)
 	int	bot;
 	
 	i = 0;
-	bot = nb_line(file);
+	bot = nb_line(file) - 1;
 	while (map[0][i])
 	{
 		if (map[0][i] != '1')
@@ -105,11 +112,80 @@ int	check_top_bot(char **map, char *file)
 		i++;
 	}
 	i = 0;
-	while(map[bot - 1][i])//creer une variable last pour bot-1 pour ameliorer visibilite
+	while(map[bot][i])
 	{
-		if (map[bot - 1][i] != '1')
+		if (map[bot][i] != '1')
 			return (0);
 		i++;
 	}
 	return (1);
+}
+
+int		check_sides(char **map)
+{
+	int	i;
+	int	len;
+	
+	len = ft_strlen(map[i]);
+	i = 0;
+	while(map[i])
+	{
+		if (map[i][0] != '1' && map[i][len] != '1')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	check_name(char *file)
+{
+	int i;
+	int valide;
+	
+	valide = 0;
+	i = 0;
+	while (file[i])
+		i++;
+	if (file[i - 1] == 'r')
+		valide += 1;
+	if(file[i - 2] == 'e')
+		valide += 1;
+	if (file[i - 3] == 'b')
+		valide += 1;
+	if (file[i - 4] == '.')
+		valide += 1;
+	if (valide == 4)
+		return (1);
+	else
+		return (0);
+}
+
+int		check_valide_cases(char **map)
+{
+	int	i;
+	int	j;
+	int nb_p;
+	int	nb_e;
+	
+	i = 0;
+	nb_e = 0;
+	nb_p = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (!(map[i][j] == '1' || map[i][j] == '0' || map[i][j] == 'C'))
+				return (0);
+			else if (map[i][j] == 'P')
+				nb_p += 1;
+			else if (map[i][j] == 'E')
+				nb_e += 1;
+			j++;
+		}
+		i++;
+	}
+	if (nb_p != 1 || nb_e != 1)
+			return (0);
+		return (1);
 }
