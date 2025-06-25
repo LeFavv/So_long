@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:43:25 by vafavard          #+#    #+#             */
-/*   Updated: 2025/06/22 04:43:47 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/06/25 16:31:56 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int		nb_line(char *file);
 char	**load_map(char *file);
-void	free_map(char **map);
-int		check_rectangle(char **map);
-int		check_top_bot(char **map, char *file);
-int		check_sides(char **map);
+void	free_map(t_game *game);
+int		check_rectangle(t_game *game);
+int		check_top_bot(t_game *game, char *file);
+int		check_sides(t_game *game);
 int		check_name(char *file);
-int		check_valide_cases(char **map);
+int		check_valide_cases(t_game *game);
 void	flood_fill(char **dup_map, int player_y, int player_x);
 int		check_flood_fill(char **dup_map);
 
@@ -76,68 +76,68 @@ char	**load_map(char *file)
 	return (map);
 }
 
-void	free_map(char **map)
+void	free_map(t_game *game)
 {
 	int	i;
 	
 	i = 0;
-	while (map[i])
+	while (game->map[i])
 	{
-		free(map[i]);
+		free(game->map[i]);
 		i++;
 	}
-	free(map);
+	free(game->map);
 }
 
-int	check_rectangle(char **map)
+int	check_rectangle(t_game *game)
 {
 	int	i;
 	int	len;
 	
 	i = 0;
-	len = ft_strlen(map[i]);
-	while (map[i])
+	len = ft_strlen(game->map[i]);
+	while (game->map[i])
 	{
-		if (len != ft_strlen(map[i]))
+		if (len != ft_strlen(game->map[i]))
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-int	check_top_bot(char **map, char *file)
+int	check_top_bot(t_game *game, char *file)
 {
 	int	i;
 	int	bot;
 	
 	i = 0;
 	bot = nb_line(file) - 1;
-	while (map[0][i])
+	while (game->map[0][i])
 	{
-		if (map[0][i] != '1')
+		if (game->map[0][i] != '1')
 			return (0);
 		i++;
 	}
 	i = 0;
-	while(map[bot][i])
+	while(game->map[bot][i])
 	{
-		if (map[bot][i] != '1')
+		if (game->map[bot][i] != '1')
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-int		check_sides(char **map)
+int		check_sides(t_game *game)
 {
 	int	i;
 	int	len;
 	
-	len = ft_strlen(map[i]);
+	len = ft_strlen(game->map[i]);
 	i = 0;
-	while(map[i])
+	while(game->map[i])
 	{
-		if (map[i][0] != '1' && map[i][len] != '1')
+		if (game->map[i][0] != '1' && game->map[i][len] != '1')
 			return (0);
 		i++;
 	}
@@ -167,7 +167,7 @@ int	check_name(char *file)
 		return (0);
 }
 
-int		check_valide_cases(char **map)
+int		check_valide_cases(t_game *game)
 {
 	int	i;
 	int	j;
@@ -177,16 +177,16 @@ int		check_valide_cases(char **map)
 	i = 0;
 	nb_e = 0;
 	nb_p = 0;
-	while (map[i])
+	while (game->map[i])
 	{
 		j = 0;
-		while (map[i][j])
+		while (game->map[i][j])
 		{
-			if (!(map[i][j] == '1' || map[i][j] == '0' || map[i][j] == 'C'))
+			if (!(game->map[i][j] == '1' || game->map[i][j] == '0' || game->map[i][j] == 'C'))
 				return (0);
-			else if (map[i][j] == 'P')
+			else if (game->map[i][j] == 'P')
 				nb_p += 1;
-			else if (map[i][j] == 'E')
+			else if (game->map[i][j] == 'E')
 				nb_e += 1;
 			j++;
 		}
