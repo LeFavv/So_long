@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:43:25 by vafavard          #+#    #+#             */
-/*   Updated: 2025/06/26 13:36:43 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/06/26 17:40:32 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,14 @@
 
 int		nb_line(char *file);
 char	**load_map(char *file);
-void	free_map(t_game *game);
-int		check_rectangle(t_game *game);
-int		check_top_bot(t_game *game, char *file);
-int		check_sides(t_game *game);
+void	free_map(char **map);
+int		check_rectangle(char **map);
+int		check_top_bot(char **map, char *file);
+int		check_sides(char **map);
 int		check_name(char *file);
-int		check_valide_cases(t_game *game);
+int		check_valide_cases(char **map);
 void	flood_fill(char **dup_map, int player_y, int player_x);
 int		check_flood_fill(char **dup_map);
-
-//message d'erreur si pas de chemin valide
-//Compter de na'voir qu'une sortie
-
-//a faire : gerer les messages d'erreurs explicites
 
 int nb_line(char *file)
 {
@@ -73,17 +68,17 @@ char	**load_map(char *file)
 	return (map);
 }
 
-void	free_map(t_game *game)
+void	free_map(char **map)
 {
 	int	i;
 	
 	i = 0;
-	while (game->map[i])
+	while (map[i])
 	{
-		free(game->map[i]);
+		free(map[i]);
 		i++;
 	}
-	free(game->map);
+	free(map);
 }
 
 void	free_dup_map(char **dup)
@@ -99,55 +94,55 @@ void	free_dup_map(char **dup)
 	free(dup);
 }
 
-int	check_rectangle(t_game *game)
+int	check_rectangle(char **map)
 {
 	int	i;
 	int	len;
 	
 	i = 0;
-	len = ft_strlen(game->map[i]);
-	while (game->map[i])
+	len = ft_strlen(map[i]);
+	while (map[i])
 	{
-		if (len != ft_strlen(game->map[i]))
+		if (len != ft_strlen(map[i]))
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-int	check_top_bot(t_game *game, char *file)
+int	check_top_bot(char **map, char *file)
 {
 	int	i;
 	int	bot;
 	
 	i = 0;
 	bot = nb_line(file) - 1;
-	while (game->map[0][i])
+	while (map[0][i])
 	{
-		if (game->map[0][i] != '1')
+		if (map[0][i] != '1')
 			return (0);
 		i++;
 	}
 	i = 0;
-	while(game->map[bot][i])
+	while(map[bot][i])
 	{
-		if (game->map[bot][i] != '1')
+		if (map[bot][i] != '1')
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-int		check_sides(t_game *game)
+int		check_sides(char **map)
 {
 	int	i;
 	int	len;
 	
-	len = ft_strlen(game->map[i]);
+	len = ft_strlen(map[i]);
 	i = 0;
-	while(game->map[i])
+	while(map[i])
 	{
-		if (game->map[i][0] != '1' && game->map[i][len] != '1')
+		if (map[i][0] != '1' && map[i][len] != '1')
 			return (0);
 		i++;
 	}
@@ -177,7 +172,7 @@ int	check_name(char *file)
 		return (0);
 }
 
-int		check_valide_cases(t_game *game)
+int		check_valide_cases(char **map)
 {
 	int	i;
 	int	j;
@@ -187,16 +182,16 @@ int		check_valide_cases(t_game *game)
 	i = 0;
 	nb_e = 0;
 	nb_p = 0;
-	while (game->map[i])
+	while (map[i])
 	{
 		j = 0;
-		while (game->map[i][j])
+		while (map[i][j])
 		{
-			if (!(game->map[i][j] == '1' || game->map[i][j] == '0' || game->map[i][j] == 'C'))
+			if (!(map[i][j] == '1' || map[i][j] == '0' || map[i][j] == 'C'))
 				return (0);
-			else if (game->map[i][j] == 'P')
+			else if (map[i][j] == 'P')
 				nb_p += 1;
-			else if (game->map[i][j] == 'E')
+			else if (map[i][j] == 'E')
 				nb_e += 1;
 			j++;
 		}
@@ -242,38 +237,67 @@ int check_flood_fill(char **dup_map)
 	return (1);
 }
 
-int	error_check(char **tab)
+int	check_exit_number(char **map)
 {
-	if (!check_sides(tab) || !check_top_bot(tab))
+	int	x;
+	int	y;
+	int count;
+
+	y = 0;
+	count = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+		{
+			if (map[y][x] == 'E')
+				count++;
+			x++;
+		}
+		y++;
+	}
+	if (count != 1)
+		return (0);
+	return (1);
+}
+
+int	error_check(char **tab, char *file)
+{
+	if (!check_sides(tab) || !check_top_bot(tab, file))
 	{
 		printf("Error\nThe map must contain only 1 (walls) on each sides\n");
 		return (0);
 	}
-	if (!check_rectangle(tab))
+	else if (!check_rectangle(tab))
 	{
 		printf("Error\nThe map must be a rectangle\n");
 		return (0);
 	}
-	if (!check_name(tab))
+	else if (!check_name(tab))
 	{
 		printf("Error\nThe map must be a .ber file\n");
 		return (0);
 	}
-	if (!check_valide_cases(tab))
+	else if (!check_valide_cases(tab))
 	{
 		printf("Error\nYou must fill the map with 0, 1, P, C or E\n");
 		return (0);
 	}
-	if (!check_flood_fill(tab))
+	else if (!check_flood_fill(tab))
 	{
 		printf("Error\nThere is no path to collect all the coins and leave out\n");
 		return (0);
 	}
-	if (!check_exit_number(tab))
+	else if (!check_exit_number(tab))
 	{
 		printf("Error\nYou need to have only one Exit in ur map\n");
 		return (0);
 	}
+	else if (!load_map(file))
+	{
+		printf("Error\nThe map load failed\n");
+		return (0);
+	}
 	return (1);
-
 }
+
