@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:43:25 by vafavard          #+#    #+#             */
-/*   Updated: 2025/06/26 02:47:39 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/06/26 13:36:43 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,8 @@ int		check_valide_cases(t_game *game);
 void	flood_fill(char **dup_map, int player_y, int player_x);
 int		check_flood_fill(char **dup_map);
 
-//un message d'erreur si map est pas rectangle
-//message d'erreur si chaque cote ne sont pas que des 1
-//message d'erreur pour le nom
-//message d'erreur pour les cases si c'est pas valide
 //message d'erreur si pas de chemin valide
+//Compter de na'voir qu'une sortie
 
 //a faire : gerer les messages d'erreurs explicites
 
@@ -243,4 +240,40 @@ int check_flood_fill(char **dup_map)
 	}
 	free_dup_map(dup_map);
 	return (1);
+}
+
+int	error_check(char **tab)
+{
+	if (!check_sides(tab) || !check_top_bot(tab))
+	{
+		printf("Error\nThe map must contain only 1 (walls) on each sides\n");
+		return (0);
+	}
+	if (!check_rectangle(tab))
+	{
+		printf("Error\nThe map must be a rectangle\n");
+		return (0);
+	}
+	if (!check_name(tab))
+	{
+		printf("Error\nThe map must be a .ber file\n");
+		return (0);
+	}
+	if (!check_valide_cases(tab))
+	{
+		printf("Error\nYou must fill the map with 0, 1, P, C or E\n");
+		return (0);
+	}
+	if (!check_flood_fill(tab))
+	{
+		printf("Error\nThere is no path to collect all the coins and leave out\n");
+		return (0);
+	}
+	if (!check_exit_number(tab))
+	{
+		printf("Error\nYou need to have only one Exit in ur map\n");
+		return (0);
+	}
+	return (1);
+
 }
