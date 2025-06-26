@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:28:26 by vafavard          #+#    #+#             */
-/*   Updated: 2025/06/25 16:31:50 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/06/26 03:34:58 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
+
+# define TILE_SIZE 64
 
 typedef struct s_textures
 {

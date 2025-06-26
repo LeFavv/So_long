@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:43:25 by vafavard          #+#    #+#             */
-/*   Updated: 2025/06/25 16:31:56 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/06/26 02:47:39 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,19 @@ void	free_map(t_game *game)
 		i++;
 	}
 	free(game->map);
+}
+
+void	free_dup_map(char **dup)
+{
+	int	i;
+	
+	i = 0;
+	while (dup[i])
+	{
+		free(dup[i]);
+		i++;
+	}
+	free(dup);
 }
 
 int	check_rectangle(t_game *game)
@@ -220,10 +233,14 @@ int check_flood_fill(char **dup_map)
 		while (dup_map[y][x])
 		{
 			if (dup_map[y][x] != '1' && dup_map[y][x] != 'F')
+			{
+				free_dup_map(dup_map);
 				return (0);
+			}
 			x++;
 		}
 		y++;
 	}
+	free_dup_map(dup_map);
 	return (1);
 }
