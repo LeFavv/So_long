@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 02:49:36 by vafavard          #+#    #+#             */
-/*   Updated: 2025/06/26 03:15:35 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/06/26 19:02:00 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,5 @@ void    move_player(t_game *game, int dy, int dx)
 	game->player_y = new_y;
 	game->moves++;
 	printf("Moves : %d\n", game->moves);
-	// + recharger la map
+	load_map(game->map);
 }

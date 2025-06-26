@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 03:08:20 by vafavard          #+#    #+#             */
-/*   Updated: 2025/06/26 03:12:16 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/06/26 19:02:02 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int key_hook(int keycode, t_game *game)
 {
-	if (keycode == ESC) //addapter code touche ESC
+	if (keycode == 57) //ESC
 	   exit_game(game);
 	else if (keycode == 'w')
 		move_player(game, 1, 0);
