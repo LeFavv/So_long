@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:43:25 by vafavard          #+#    #+#             */
-/*   Updated: 2025/06/26 17:40:32 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/06/26 17:44:59 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int		check_name(char *file);
 int		check_valide_cases(char **map);
 void	flood_fill(char **dup_map, int player_y, int player_x);
 int		check_flood_fill(char **dup_map);
+int		check_exit_number(char **map);
+int		error_check(char **tab, char *file);
 
 int nb_line(char *file)
 {

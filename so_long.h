@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:28:26 by vafavard          #+#    #+#             */
-/*   Updated: 2025/06/26 03:56:16 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/06/26 17:46:15 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,21 @@ typedef struct s_game
 
 //utils
 int	ft_strlen(char *str);
+char	*ft_strdup(char *str);
+char	**dup_map(char **map);
 
-//check map
+//check map + Map Errors
 int		nb_line(char *file);
 char	**load_map(char *file);
-void	free_map(t_game *game);
-int		check_rectangle(t_game *game);
-int		check_top_bot(t_game *game, char *file);
-int		check_sides(t_game *game);
+void	free_map(char **map);
+int		check_rectangle(char **map);
+int		check_top_bot(char **map, char *file);
+int		check_sides(char **map);
 int		check_name(char *file);
-int		check_valide_cases(t_game *game);
+int		check_valide_cases(char **map);
 void	flood_fill(char **dup_map, int player_y, int player_x);
 int		check_flood_fill(char **dup_map);
+int		check_exit_number(char **map);
+int		error_check(char **tab, char *file);
 
 #endif
