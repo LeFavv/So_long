@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:28:26 by vafavard          #+#    #+#             */
-/*   Updated: 2025/06/26 19:29:30 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/06/27 16:54:19 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,7 @@ void	flood_fill(char **dup_map, int player_y, int player_x);
 int		check_flood_fill(char **dup_map);
 int		check_exit_number(char **map);
 int		error_check(char **tab, char *file);
+int		check_command_line_params(int argc, char **argv);
+
 
 #endif

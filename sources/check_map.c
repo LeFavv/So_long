@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:43:25 by vafavard          #+#    #+#             */
-/*   Updated: 2025/06/26 17:44:59 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/06/27 16:53:23 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -275,11 +275,7 @@ int	error_check(char **tab, char *file)
 		printf("Error\nThe map must be a rectangle\n");
 		return (0);
 	}
-	else if (!check_name(tab))
-	{
-		printf("Error\nThe map must be a .ber file\n");
-		return (0);
-	}
+	
 	else if (!check_valide_cases(tab))
 	{
 		printf("Error\nYou must fill the map with 0, 1, P, C or E\n");
