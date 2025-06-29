@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:43:25 by vafavard          #+#    #+#             */
-/*   Updated: 2025/06/27 16:53:23 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/06/30 01:00:41 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int nb_line(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		return (-1);
-	while (line = get_next_line(fd))
+	while ((line = get_next_line(fd)))
 	{
 		free(line);
 		count++;
@@ -60,7 +60,7 @@ char	**load_map(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		return (NULL);
-	while (line = get_next_line(fd))
+	while ((line = get_next_line(fd)))
 	{
 		map[i] = line;
 		i++;
@@ -105,7 +105,7 @@ int	check_rectangle(char **map)
 	len = ft_strlen(map[i]);
 	while (map[i])
 	{
-		if (len != ft_strlen(map[i]))
+		if (len != (int)ft_strlen(map[i]))
 			return (0);
 		i++;
 	}
@@ -140,8 +140,8 @@ int		check_sides(char **map)
 	int	i;
 	int	len;
 	
-	len = ft_strlen(map[i]);
 	i = 0;
+	len = ft_strlen(map[i]);
 	while(map[i])
 	{
 		if (map[i][0] != '1' && map[i][len] != '1')

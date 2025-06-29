@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:28:26 by vafavard          #+#    #+#             */
-/*   Updated: 2025/06/27 16:54:19 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/06/30 00:56:07 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include <stdio.h>
 
 # define TILE_SIZE 64
 
@@ -48,8 +49,8 @@ typedef struct s_game
 }	t_game;
 
 //utils
-int	ft_strlen(char *str);
-char	*ft_strdup(char *str);
+// int	ft_strlen(char *str);
+// char	*ft_strdup(char *str);
 char	**dup_map(char **map);
 
 //collectibles

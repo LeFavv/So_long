@@ -6,39 +6,39 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:27:50 by vafavard          #+#    #+#             */
-/*   Updated: 2025/06/25 16:31:47 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/06/30 00:32:36 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long.h>
 
-int	ft_strlen(char *str)
-{
-	int	i;
+// int	ft_strlen(char *str)
+// {
+// 	int	i;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
+// 	i = 0;
+// 	while (str[i])
+// 		i++;
+// 	return (i);
+// }
 
-char	*ft_strdup(char *str)
-{
-	int		i;
-	char	*dup;
+// char	*ft_strdup(char *str)
+// {
+// 	int		i;
+// 	char	*dup;
 
-	i = 0;
-	dup = malloc(sizeof(char) * (ft_strlen(str) + 1));
-	if (!dup)
-		return (NULL);
-	while(str[i])
-	{
-		dup[i] = str[i];
-		i++;
-	}
-	dup[i] = '\0';
-	return (dup);
-}
+// 	i = 0;
+// 	dup = malloc(sizeof(char) * (ft_strlen(str) + 1));
+// 	if (!dup)
+// 		return (NULL);
+// 	while(str[i])
+// 	{
+// 		dup[i] = str[i];
+// 		i++;
+// 	}
+// 	dup[i] = '\0';
+// 	return (dup);
+// }
 
 char	**dup_map(char **map)
 {

@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:26:15 by vafavard          #+#    #+#             */
-/*   Updated: 2025/06/27 16:54:41 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/06/30 00:47:07 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,8 @@ int	check_command_line_params(int argc, char **argv)
 int	main(int argc, char **argv)
 {
 	t_game	*game;
-	// load_map(char *file)
-	// error_check(char **tab, char *file)
+
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, game->win_width * TILE_SIZE , game->win_height * TILE_SIZE, "So Long");
-	mlx_put_image_to_window(game->mlx, game->win, img.img, 0, 0);
 	mlx_loop(game->mlx);
 }

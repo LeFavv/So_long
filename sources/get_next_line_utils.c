@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 20:47:55 by vafavard          #+#    #+#             */
-/*   Updated: 2025/06/26 19:31:45 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/06/30 00:32:19 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,35 +47,35 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-// char	*ft_strdup(const char *s1)
-// {
-// 	char	*s2;
-// 	int		i;
+char	*ft_strdup(const char *s1)
+{
+	char	*s2;
+	int		i;
 
-// 	i = 0;
-// 	s2 = malloc(sizeof(char) * (ft_strlen(s1) + 1));
-// 	if (!s2)
-// 		return (NULL);
-// 	while (s1[i])
-// 	{
-// 		s2[i] = s1[i];
-// 		i++;
-// 	}
-// 	s2[i] = '\0';
-// 	return (s2);
-// }
+	i = 0;
+	s2 = malloc(sizeof(char) * (ft_strlen(s1) + 1));
+	if (!s2)
+		return (NULL);
+	while (s1[i])
+	{
+		s2[i] = s1[i];
+		i++;
+	}
+	s2[i] = '\0';
+	return (s2);
+}
 
-// size_t	ft_strlen(const char *s)
-// {
-// 	size_t	i;
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
 
-// 	i = 0;
-// 	if (!*s || !s[i])
-// 		return (0);
-// 	while (s[i])
-// 		i++;
-// 	return (i);
-// }
+	i = 0;
+	if (!*s || !s[i])
+		return (0);
+	while (s[i])
+		i++;
+	return (i);
+}
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
