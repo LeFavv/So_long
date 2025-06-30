@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:26:15 by vafavard          #+#    #+#             */
-/*   Updated: 2025/06/30 16:02:02 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/06/30 16:06:41 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,14 @@ int	check_command_line_params(int argc, char **argv)
 	return (1);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_game	*game;
 
 	game = malloc(sizeof(t_game));
 	game->mlx = mlx_init();
+	game->map = load_map(argv[1]);
 	game->win = mlx_new_window(game->mlx, game->win_width * TILE_SIZE , game->win_height * TILE_SIZE, "So Long");
 	mlx_loop(game->mlx);
 }
+//game->map = load_map(argv[1])

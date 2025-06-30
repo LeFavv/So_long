@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 02:49:36 by vafavard          #+#    #+#             */
-/*   Updated: 2025/06/30 15:53:21 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/06/30 16:23:17 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void    move_player(t_game *game, int dy, int dx)
 	else if (next_tile == 'E')
 	{
 		if (game->collectibles == 0)
-			end_game(game, "Feliciations vous avez reussi le jeu !\n", 1);
+			end_game(game, "Felicitations vous avez reussi le jeu !\n", 1);
 		else
 			return;
 	}
