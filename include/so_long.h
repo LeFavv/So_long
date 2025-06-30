@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:28:26 by vafavard          #+#    #+#             */
-/*   Updated: 2025/06/30 00:56:07 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/06/30 15:46:44 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,10 @@ int		check_flood_fill(char **dup_map);
 int		check_exit_number(char **map);
 int		error_check(char **tab, char *file);
 int		check_command_line_params(int argc, char **argv);
+
+//end
+void	destroy_image(t_game *game);
+int	end_game(t_game *game, char *msg, int exit_code);
 
 
 #endif

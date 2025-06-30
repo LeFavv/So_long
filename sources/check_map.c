@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:43:25 by vafavard          #+#    #+#             */
-/*   Updated: 2025/06/30 01:00:41 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/06/30 15:53:10 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ char	**load_map(char *file)
 	close(fd);
 	return (map);
 }
+
 
 void	free_map(char **map)
 {

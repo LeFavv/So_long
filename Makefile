@@ -6,7 +6,7 @@
 #    By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/13 18:13:53 by vafavard          #+#    #+#              #
-#    Updated: 2025/06/30 00:54:41 by vafavard         ###   ########.fr        #
+#    Updated: 2025/06/30 15:58:31 by vafavard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra
 SRC_PATH = sources/
 
-SRC_FILES = check_map.c collectibles.c get_next_line.c \
+SRC_FILES = check_map.c collectibles.c get_next_line.c get_next_line_utils.c\
 			image.c keyhook.c player.c so_long.c utils.c
 
 SRC = $(addprefix $(SRC_PATH), $(SRC_FILES))

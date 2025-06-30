@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 02:49:36 by vafavard          #+#    #+#             */
-/*   Updated: 2025/06/26 19:02:00 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/06/30 15:53:21 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,11 @@ void    move_player(t_game *game, int dy, int dx)
 {
 	int 	new_x;
 	int 	new_y;
-	char	next_tile = game->map[new_y][new_x];
-
 	new_x = game->player_x + dx;
 	new_y = game->player_y + dy;
+	char	next_tile = game->map[new_y][new_x];
+
+	
 	if (next_tile == '1')
 		return;
 	else if (next_tile == 'C')
@@ -53,7 +54,7 @@ void    move_player(t_game *game, int dy, int dx)
 	else if (next_tile == 'E')
 	{
 		if (game->collectibles == 0)
-			end_game(game);
+			end_game(game, "Feliciations vous avez reussi le jeu !\n", 1);
 		else
 			return;
 	}
@@ -63,5 +64,5 @@ void    move_player(t_game *game, int dy, int dx)
 	game->player_y = new_y;
 	game->moves++;
 	printf("Moves : %d\n", game->moves);
-	load_map(game->map);
+	// load_map(game->map);
 }
