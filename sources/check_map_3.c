@@ -6,9 +6,11 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:31:15 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/01 14:33:17 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/01 14:34:34 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "so_long.h"
 
 int		check_exit_number(char **map);
 int		error_check(char **tab, char *file, t_game *game);

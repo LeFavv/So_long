@@ -6,9 +6,11 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:31:12 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/01 14:32:20 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/01 14:34:43 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "so_long.h"
 
 int		check_sides(char **map);
 int		check_name(char *file);
