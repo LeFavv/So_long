@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 02:49:36 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/01 10:40:14 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/01 11:12:11 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@ void    find_player(t_game *game)
 	int y;
 
 	y = 0;
-	printf("je suis dans la fonction\n");
 	while(game->map[y])
 	{
-		printf("salut");
 		x = 0;
 		while(game->map[y][x])
 		{
@@ -45,7 +43,6 @@ void    move_player(t_game *game, int dy, int dx)
 	new_y = game->player_y + dy;
 	char	next_tile = game->map[new_y][new_x];
 
-	printf("hey\n");
 	find_player(game);
 	if (next_tile == '1')
 		return;

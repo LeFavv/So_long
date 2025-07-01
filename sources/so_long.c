@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:26:15 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/01 10:29:57 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/01 11:11:40 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,13 @@ int	main(int argc, char **argv)
 
 	game = malloc(sizeof(t_game));
 	game->mlx = mlx_init();
-	printf("je suis la\n");
 	if (argc == 2)
 		game->map = load_map(argv[1]);
-	printf("je suis la\n");
 	set_map_width_height(game);
-	printf("je suis la\n");
 	game->win = mlx_new_window(game->mlx, game->win_width , game->win_height, "So Long");
 	init_image(game);
 	render_map(game);
-	mlx_key_hook(game->win, key_hook, &game);
+	mlx_key_hook(game->win, key_hook, game);
 	mlx_loop(game->mlx);
 	free(game);
 }
