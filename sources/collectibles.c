@@ -6,13 +6,13 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 03:05:46 by vafavard          #+#    #+#             */
-/*   Updated: 2025/06/26 03:07:52 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/01 11:30:12 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int count_collectibles(t_game *game)
+void count_collectibles(t_game *game)
 {
 	int	x;
 	int	y;
@@ -31,5 +31,5 @@ int count_collectibles(t_game *game)
 		}
 		y++;
 	}
-	return (count);
+	game->collectibles = count;
 }

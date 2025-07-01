@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 03:08:20 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/01 11:12:52 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/01 11:19:48 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@ int key_hook(int keycode, t_game *game)
 	else if (keycode == 'd')
 		move_player(game, 0, 1);
 	else if (keycode == 'a')
-	{
-		find_player(game);
 		move_player(game, 0, -1);
-	}
 	return(0);
 }
 
