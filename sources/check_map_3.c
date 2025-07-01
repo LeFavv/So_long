@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:31:15 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/01 15:15:03 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/01 16:04:38 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,15 @@ int	check_exit_number(char **map)
 int	error_check(char **tab, char *file, t_game *game)
 {
     char **dup = dup_map(tab);
-    flood_fill(dup, game->player_y, game->player_x);
+    int x;
+    flood_fill(dup, game->player_y, game->player_x); 
+        x = 0;
+    while(dup[x])
+    {
+        printf("%s\n", dup[x]);
+        x++;
+    }
+    
 	if (!check_sides(tab) || !check_top_bot(tab, file))
 	{
 		printf("top bot %d\n", check_top_bot(tab, file));
@@ -68,6 +76,7 @@ int	error_check(char **tab, char *file, t_game *game)
 		printf("Error\nYou must fill the map with 0, 1, P, C or E\n");
 		return (0);
 	}
+
 	else if (!check_flood_fill(dup))
 	{
 		printf("Error\nThere is no path to collect all the coins and leave out\n");
@@ -85,3 +94,6 @@ int	error_check(char **tab, char *file, t_game *game)
 	}
 	return (1);
 }
+//to_do
+//stocker la dup dans la structure pour eviter de ne pas agir sur la chaine 
+//+ clair car tout regrouper
