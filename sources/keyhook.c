@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 03:08:20 by vafavard          #+#    #+#             */
-/*   Updated: 2025/06/30 15:48:46 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/01 10:26:10 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int key_hook(int keycode, t_game *game)
 {
-	if (keycode == 57) //ESC
-	   end_game(game, "Vous avez decider de quitter le jeu\n", 0); // ou endgame fonction qui ferme la fenetre et free tout 
+	if (keycode == 53) //ESC
+	   end_game(game, "Vous avez decider de quitter le jeu\n", 0);
 	else if (keycode == 'w')
 		move_player(game, 1, 0);
 	else if (keycode == 's')
@@ -23,15 +23,16 @@ int key_hook(int keycode, t_game *game)
 	else if (keycode == 'd')
 		move_player(game, 0, 1);
 	else if (keycode == 'a')
+	{
+		printf("Avant d'entrer dans la fonction\n");
+		find_player(game);
+		printf("player_x = %d\n", game->player_x);
+		printf("player_y = %d\n", game->player_y);
+		printf("hey\n");
 		move_player(game, 0, -1);
+	}
 	return(0);
 }
-
-//end_game
-//free_map
-//voir si victoire ou echec
-//imprimer message
-//exit(failure ou success ??)
 
 void	destroy_image(t_game *game)
 {

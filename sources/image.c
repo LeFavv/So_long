@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 03:37:08 by vafavard          #+#    #+#             */
-/*   Updated: 2025/06/26 19:18:01 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/01 10:51:36 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,8 @@ void    set_map_width_height(t_game *game)
 	height = 0;
 	while (game->map[0][width])
 		width++;
-	game->map_width = width;
 	while(game->map[height])
 		height++;
-	game->map_height = height;
 	game->win_height = height * TILE_SIZE;
 	game->win_width = width * TILE_SIZE;
 }

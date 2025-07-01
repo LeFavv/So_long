@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:43:25 by vafavard          #+#    #+#             */
-/*   Updated: 2025/06/30 15:53:10 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/01 10:14:05 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int nb_line(char *file)
 	int		count;
 	char	*line;
 	
+	count = 0;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		return (-1);
@@ -194,6 +195,7 @@ int		check_valide_cases(char **map)
 				return (0);
 			else if (map[i][j] == 'P')
 				nb_p += 1;
+				
 			else if (map[i][j] == 'E')
 				nb_e += 1;
 			j++;
