@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:28:26 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/01 11:30:27 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/01 15:04:51 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ typedef struct s_game
 }	t_game;
 
 //utils
-// int	ft_strlen(char *str);
-// char	*ft_strdup(char *str);
 char	**dup_map(char **map);
 
 //collectibles
@@ -68,6 +66,9 @@ int key_hook(int keycode, t_game *game);
 void    find_player(t_game *game);
 void    move_player(t_game *game, int dy, int dx);
 
+//free
+void	free_dup_map(char **dup);
+void	free_map(char **map);
 
 //check map + Map Errors
 int		nb_line(char *file);
@@ -81,8 +82,10 @@ int		check_valide_cases(char **map);
 void	flood_fill(char **dup_map, int player_y, int player_x);
 int		check_flood_fill(char **dup_map);
 int		check_exit_number(char **map);
-int		error_check(char **tab, char *file);
+int		error_check(char **tab, char *file, t_game *game);
 int		check_command_line_params(int argc, char **argv);
+void	remove_newline(char *line);
+
 
 //end
 void	destroy_image(t_game *game);
