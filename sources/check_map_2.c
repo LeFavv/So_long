@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:31:12 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/01 15:59:53 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/02 11:06:02 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int		check_sides(char **map);
 int		check_name(char *file);
 int		check_valide_cases(char **map);
-void	flood_fill(char **dup_map, int player_y, int player_x);
-int		check_flood_fill(char **dup_map);
+void	flood_fill(t_game *game, int player_y, int player_x);
+int		check_flood_fill(t_game *game);
 
 int		check_sides(char **map)
 {
@@ -91,37 +91,47 @@ int		check_valide_cases(char **map)
 		return (1);
 }
 
-void	flood_fill(char **dup_map, int player_y, int player_x)
+void	flood_fill(t_game *game, int player_y, int player_x)
 {
-	if (dup_map[player_y][player_x] == '1' || dup_map[player_y][player_x] == 'F')
+	find_player(game);
+	if (game->dup_map[player_y][player_x] == '1' || game->dup_map[player_y][player_x] == 'F')
+	{
+		printf("player x = %d\n", game->player_x);
+		printf("player y = %d\n", game->player_y);
+		return;		
+	}
+	if (game->dup_map[player_y][player_x] == 'E')
+	{
+		game->dup_map[player_y][player_x] = '1';
 		return;
-	dup_map[player_y][player_x] = 'F';
-	flood_fill(dup_map, player_y, player_x + 1);
-	flood_fill(dup_map, player_y , player_x - 1);
-	flood_fill(dup_map, player_y + 1, player_x);
-	flood_fill(dup_map, player_y - 1, player_x);
+	}
+	game->dup_map[player_y][player_x] = 'F';
+	flood_fill(game, player_y, player_x + 1);
+	flood_fill(game, player_y , player_x - 1);
+	flood_fill(game, player_y + 1, player_x);
+	flood_fill(game, player_y - 1, player_x);
 }
 
-int check_flood_fill(char **dup_map)
+int check_flood_fill(t_game *game)
 {
 	int	x;
 	int	y;
 
 	y = 0;
-	while (dup_map[y])
+	while (game->dup_map[y])
 	{
 		x = 0;
-		while (dup_map[y][x])
+		while (game->dup_map[y][x])
 		{
-			if (dup_map[y][x] == 'E' || dup_map[y][x] == 'C')
+			if (game->dup_map[y][x] == 'E' || game->dup_map[y][x] == 'C')
 			{
-				free_dup_map(dup_map);
+				free_dup_map(game->dup_map);
 				return (0);
 			}
 			x++;
 		}
 		y++;
 	}
-	free_dup_map(dup_map);
+	free_dup_map(game->dup_map);
 	return (1);
 }

@@ -6,13 +6,13 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 03:37:08 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/01 11:39:02 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/02 11:15:25 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void    set_map_width_height(t_game *game);
+int    set_map_width_height(t_game *game);
 void	init_image(t_game *game);
 
 void	render_map(t_game *game)
@@ -54,7 +54,7 @@ void	init_image(t_game *game)
 	game->tex.wall_image = mlx_xpm_file_to_image(game->mlx, "texture/wall.xpm", &w, &h);
 }
 
-void    set_map_width_height(t_game *game)
+int    set_map_width_height(t_game *game)
 {
 	int width;
 	int	height;
@@ -66,6 +66,9 @@ void    set_map_width_height(t_game *game)
 		width++;
 	while(game->map[height])
 		height++;
+	if (height > MAX_HEIGHT || width > MAX_WIDTH)
+		return (0);
 	game->win_height = height * TILE_SIZE;
 	game->win_width = width * TILE_SIZE;
+	return (1);
 }

@@ -6,11 +6,11 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:28:26 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/01 15:40:24 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/02 11:25:59 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
+# ifndef SO_LONG_H
 # define SO_LONG_H
 
 #include "get_next_line.h"
@@ -21,6 +21,9 @@
 #include <stdio.h>
 
 # define TILE_SIZE 64
+# define MAX_WIDTH 40
+# define MAX_HEIGHT 21
+
 
 typedef struct s_textures
 {
@@ -38,6 +41,7 @@ typedef struct s_game
 	void		*win;
 	t_textures	tex;
 	char		**map;
+	char		**dup_map;
 	int			moves;
 	int			map_width;
 	int			map_height;
@@ -57,7 +61,7 @@ void count_collectibles(t_game *game);
 //image
 void	render_map(t_game *game);
 void	init_image(t_game *game);
-void    set_map_width_height(t_game *game);
+int    set_map_width_height(t_game *game);
 
 //hook
 int key_hook(int keycode, t_game *game);
@@ -79,8 +83,8 @@ int		check_top_bot(char **map, char *file);
 int		check_sides(char **map);
 int		check_name(char *file);
 int		check_valide_cases(char **map);
-void	flood_fill(char **dup_map, int player_y, int player_x);
-int		check_flood_fill(char **dup_map);
+void	flood_fill(t_game *game, int player_y, int player_x);
+int		check_flood_fill(t_game *game);
 int		check_exit_number(char **map);
 int		error_check(char **tab, char *file, t_game *game);
 int		check_command_line_params(int argc, char **argv);
