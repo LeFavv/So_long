@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:31:12 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/02 11:06:02 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/05 02:53:05 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ int		check_valide_cases(char **map);
 void	flood_fill(t_game *game, int player_y, int player_x);
 int		check_flood_fill(t_game *game);
 
-int		check_sides(char **map)
+int	check_sides(char **map)
 {
 	int	i;
 	int	len;
-	
+
 	i = 0;
 	len = ft_strlen(map[i]);
-	while(map[i])
+	while (map[i])
 	{
 		if (map[i][0] != '1' && map[i][len] != '1')
 			return (0);
@@ -36,16 +36,16 @@ int		check_sides(char **map)
 
 int	check_name(char *file)
 {
-	int i;
-	int valide;
-	
+	int	i;
+	int	valide;
+
 	valide = 0;
 	i = 0;
 	while (file[i])
 		i++;
 	if (file[i - 1] == 'r')
 		valide += 1;
-	if(file[i - 2] == 'e')
+	if (file[i - 2] == 'e')
 		valide += 1;
 	if (file[i - 3] == 'b')
 		valide += 1;
@@ -57,13 +57,13 @@ int	check_name(char *file)
 		return (0);
 }
 
-int		check_valide_cases(char **map)
+int	check_valide_cases(char **map)
 {
 	int	i;
 	int	j;
-	int nb_p;
+	int	nb_p;
 	int	nb_e;
-	
+
 	i = 0;
 	nb_e = 0;
 	nb_p = 0;
@@ -73,15 +73,12 @@ int		check_valide_cases(char **map)
 		remove_newline(map[i]);
 		while (map[i][j])
 		{
-			
-			if (map[i][j] == 'P')
+			if (map[i][j] == 'P')//faire une fonction pour P et pour E pour gagner 2 lignes
 				nb_p += 1;
-				
 			else if (map[i][j] == 'E')
 				nb_e += 1;
 			else if (!(map[i][j] == '1' || map[i][j] == '0' || map[i][j] == 'C'))
 				return (0);	
-				
 			j++;
 		}
 		i++;
@@ -94,25 +91,26 @@ int		check_valide_cases(char **map)
 void	flood_fill(t_game *game, int player_y, int player_x)
 {
 	find_player(game);
-	if (game->dup_map[player_y][player_x] == '1' || game->dup_map[player_y][player_x] == 'F')
+	if (game->dup_map[player_y][player_x] == '1'
+	|| game->dup_map[player_y][player_x] == 'F')
 	{
 		printf("player x = %d\n", game->player_x);
 		printf("player y = %d\n", game->player_y);
-		return;		
+		return ;
 	}
 	if (game->dup_map[player_y][player_x] == 'E')
 	{
 		game->dup_map[player_y][player_x] = '1';
-		return;
+		return ;
 	}
 	game->dup_map[player_y][player_x] = 'F';
 	flood_fill(game, player_y, player_x + 1);
-	flood_fill(game, player_y , player_x - 1);
+	flood_fill(game, player_y, player_x - 1);
 	flood_fill(game, player_y + 1, player_x);
 	flood_fill(game, player_y - 1, player_x);
 }
 
-int check_flood_fill(t_game *game)
+int	check_flood_fill(t_game *game)
 {
 	int	x;
 	int	y;

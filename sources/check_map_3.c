@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:31:15 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/02 11:24:13 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/05 02:41:53 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int		check_exit_number(char **map);
 int		error_check(char **tab, char *file, t_game *game);
 void	remove_newline(char *line);
+int		check_top_bot(char **map, char *file);
 
 void	remove_newline(char *line)
 {
@@ -44,6 +45,28 @@ int	check_exit_number(char **map)
 	}
 	if (count != 1)
 		return (0);
+	return (1);
+}
+int	check_top_bot(char **map, char *file)
+{
+	int	i;
+	int	bot;
+
+	i = 0;
+	bot = nb_line(file) - 1;
+	while (i < (int)ft_strlen(map[0]) - 1)
+	{
+		if (map[0][i] != '1')
+			return (0);
+		i++;
+	}
+	i = 0;
+	while (map[bot][i])
+	{
+		if (map[bot][i] != '1')
+			return (0);
+		i++;
+	}
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:43:25 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/01 14:33:12 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/05 03:16:46 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,13 @@ int		nb_line(char *file);
 char	**load_map(char *file);
 void	free_map(char **map);
 int		check_rectangle(char **map);
-int		check_top_bot(char **map, char *file);
 
-int nb_line(char *file)
+int	nb_line(char *file)
 {
 	int		fd;
 	int		count;
 	char	*line;
-	
+
 	count = 0;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
@@ -33,6 +32,13 @@ int nb_line(char *file)
 		free(line);
 		count++;
 	}
+	// line = get_next_line(fd);
+	// while (line)
+	// {
+	// 	free(line);
+	// 	count++;
+	// 	line = get_next_line(fd);
+	// }
 	close(fd);
 	return (count);
 }
@@ -41,10 +47,11 @@ char	**load_map(char *file)
 {
 	int		fd;
 	int		lines;
-	int		i = 0;
+	int		i;
 	char	**map;
 	char	*line;
-	
+
+	i = 0;
 	lines = nb_line(file);
 	if (lines <= 0)
 		return (NULL);
@@ -59,16 +66,22 @@ char	**load_map(char *file)
 		map[i] = line;
 		i++;
 	}
+	// line = get_next_line(fd);
+	// while (line)
+	// {
+	// 	map[i] = line;
+	// 	line = get_next_line(fd);
+	// 	i++;
+	// }
 	map[i] = NULL;
 	close(fd);
 	return (map);
 }
 
-
 void	free_map(char **map)
 {
 	int	i;
-	
+
 	i = 0;
 	while (map[i])
 	{
@@ -81,7 +94,7 @@ void	free_map(char **map)
 void	free_dup_map(char **dup)
 {
 	int	i;
-	
+
 	i = 0;
 	while (dup[i])
 	{
@@ -91,12 +104,11 @@ void	free_dup_map(char **dup)
 	free(dup);
 }
 
-
 int	check_rectangle(char **map)
 {
 	int	i;
 	int	len;
-	
+
 	i = 0;
 	remove_newline(map[i]);
 	len = ft_strlen(map[i]);
@@ -110,32 +122,3 @@ int	check_rectangle(char **map)
 	}
 	return (1);
 }
-
-int	check_top_bot(char **map, char *file)
-{
-	int	i;
-	int	bot;
-	
-	i = 0;
-	bot = nb_line(file) - 1;
-	while (i < (int)ft_strlen(map[0]) - 1)
-	{
-		if (map[0][i] != '1')
-			return (0);
-		i++;
-	}
-	i = 0;
-	while(map[bot][i])
-	{
-		if (map[bot][i] != '1')
-			return (0);
-			
-		i++;
-	}
-	return (1);
-}
-
-
-
-
-
