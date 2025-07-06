@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:31:15 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/05 02:41:53 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/06 17:36:04 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,7 @@ int	error_check(char **tab, char *file, t_game *game)
 	find_player(game);
     flood_fill(game, game->player_y, game->player_x); 
         x = 0;
-    while(game->dup_map[x])
-    {
-        printf("%s\n", game->dup_map[x]);
-        x++;
-    }
-    
+	//mettre end_game au lieu des printf a chaque fois
 	if (!check_sides(tab) || !check_top_bot(tab, file))
 	{
 		printf("top bot %d\n", check_top_bot(tab, file));

@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:28:26 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/02 11:25:59 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/06 17:43:56 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ void	remove_newline(char *line);
 //end
 void	destroy_image(t_game *game);
 int	end_game(t_game *game, char *msg, int exit_code);
+
+int	exit_game(t_game *game);
 
 
 #endif

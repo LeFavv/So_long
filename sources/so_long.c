@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:26:15 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/02 11:22:15 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/06 17:42:22 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,9 @@ int	main(int argc, char **argv)
 	init_image(game);
 	render_map(game);
 	mlx_key_hook(game->win, key_hook, game);
+	mlx_hook(game->win, 17, 0, exit_game, game);
 	//erreur sur les premieres entrees clavier --> mlx_key_hook_loop ??
 	mlx_loop(game->mlx);
-	free(game);
+	printf("je suis la\n");
 	//makefile -> rajouter une regle pour make dans mlx
 }

@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 03:08:20 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/01 11:19:48 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/06 18:02:19 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int key_hook(int keycode, t_game *game)
 {
-	if (keycode == 53) //ESC
+	if (keycode == 65307) //ESC
 	   end_game(game, "Vous avez decider de quitter le jeu\n", 0);
 	else if (keycode == 's')
 		move_player(game, 1, 0);
@@ -53,7 +53,33 @@ int	end_game(t_game *game, char *msg, int exit_code)
 		if (game->mlx)
 			mlx_destroy_display(game->mlx);
 		free(game->mlx);
+		// if (game->dup_map)
+		// 	free_dup_map(game->dup_map);
+		free(game);
 	}
 	printf("%s", msg);
 	exit(exit_code);
 }
+
+int	exit_game(t_game *game)
+{
+	if (game)
+	{
+		if (game->map)
+			free_map(game->map);
+		destroy_image(game);
+		if (game->win)
+			mlx_destroy_window(game->mlx, game->win);
+		if (game->mlx)
+			mlx_destroy_display(game->mlx);
+		free(game->mlx);
+		// if (game->dup_map)
+		// {
+		// 	free_dup_map(game->dup_map);
+		// 	game->dup_map = NULL;
+		// }
+		free(game);
+	}
+	exit(0);
+}
+
