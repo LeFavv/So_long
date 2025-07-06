@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 03:08:20 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/06 18:02:19 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/06 18:36:09 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ int	end_game(t_game *game, char *msg, int exit_code)
 		if (game->mlx)
 			mlx_destroy_display(game->mlx);
 		free(game->mlx);
-		// if (game->dup_map)
-		// 	free_dup_map(game->dup_map);
+		if (game->dup_map)
+			free_dup_map(game->dup_map);
 		free(game);
 	}
 	printf("%s", msg);
@@ -73,11 +73,11 @@ int	exit_game(t_game *game)
 		if (game->mlx)
 			mlx_destroy_display(game->mlx);
 		free(game->mlx);
-		// if (game->dup_map)
-		// {
-		// 	free_dup_map(game->dup_map);
-		// 	game->dup_map = NULL;
-		// }
+		if (game->dup_map)
+		{
+			free_dup_map(game->dup_map);
+			game->dup_map = NULL;
+		}
 		free(game);
 	}
 	exit(0);

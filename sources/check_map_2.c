@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:31:12 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/06 17:33:08 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/06 18:25:25 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ int	check_flood_fill(t_game *game)
 			if (game->dup_map[y][x] == 'E' || game->dup_map[y][x] == 'C')
 			{
 				free_dup_map(game->dup_map);
+				game->dup_map = NULL;
 				return (0);
 			}
 			x++;
@@ -131,5 +132,6 @@ int	check_flood_fill(t_game *game)
 		y++;
 	}
 	free_dup_map(game->dup_map);
+	game->dup_map = NULL;
 	return (1);
 }

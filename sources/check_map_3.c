@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:31:15 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/06 17:36:04 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/06 18:33:05 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,38 +82,45 @@ int	error_check(char **tab, char *file, t_game *game)
 	{
 		printf("top bot %d\n", check_top_bot(tab, file));
 		printf("Error\nThe map must contain only 1 (walls) on each sides\n");
+		exit_game(game);
 		return (0);
 	}
 	else if (!check_rectangle(tab))
 	{
 		printf("Error\nThe map must be a rectangle\n");
+		exit_game(game);
 		return (0);
 	}
 	
 	else if (!check_valide_cases(tab))
 	{
 		printf("Error\nYou must fill the map with 0, 1, P, C or E\n");
+		exit_game(game);		
 		return (0);
 	}
 
 	else if (!check_flood_fill(game))
 	{
 		printf("Error\nThere is no path to collect all the coins and leave out\n");
+		exit_game(game);		
 		return (0);
 	}
 	else if (!check_exit_number(tab))
 	{
 		printf("Error\nYou need to have only one Exit in ur map\n");
+		exit_game(game);		
 		return (0);
 	}
 	else if (!load_map(file))
 	{
 		printf("Error\nThe map load failed\n");
+		exit_game(game);		
 		return (0);
 	}
 	else if (!set_map_width_height(game))
 	{
 		printf("Error\nThe map do not respect the size rules : Max Width = 40 characteres Max Height = 21 characters\n");
+		exit_game(game);		
 		return (0);
 	}
 	return (1);
