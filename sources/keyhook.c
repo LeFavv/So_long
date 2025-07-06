@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 03:08:20 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/06 18:36:09 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/06 18:52:02 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,10 @@ int	exit_game(t_game *game)
 	if (game)
 	{
 		if (game->map)
+		{
 			free_map(game->map);
+			game->map = NULL;	
+		}
 		destroy_image(game);
 		if (game->win)
 			mlx_destroy_window(game->mlx, game->win);
