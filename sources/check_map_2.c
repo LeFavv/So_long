@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:31:12 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/05 02:53:05 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/06 14:46:01 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	check_valide_cases(char **map)
 		while (map[i][j])
 		{
 			if (map[i][j] == 'P')//faire une fonction pour P et pour E pour gagner 2 lignes
-				nb_p += 1;
+				nb_p += 1;//verif qu'il y ait au moins un collectible
 			else if (map[i][j] == 'E')
 				nb_e += 1;
 			else if (!(map[i][j] == '1' || map[i][j] == '0' || map[i][j] == 'C'))
