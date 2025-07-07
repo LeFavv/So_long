@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 03:37:08 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/07 12:48:13 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:44:58 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	render_map(t_game *game)
 	{
 		x = 0;
 		while(game->map[y][x])
-		{
+		{//possible de rajouter une fontion ici pour mettre plus d'images (perso blesse et les nombres ?)
 			if (game->map[y][x] == '1')
 				mlx_put_image_to_window(game->mlx, game->win, game->tex.wall_image, x * TILE_SIZE, y * TILE_SIZE);
 			else if (game->map[y][x] == '0')
