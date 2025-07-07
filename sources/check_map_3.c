@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:31:15 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/06 18:55:31 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/07 09:45:23 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ int	error_check(char **tab, char *file, t_game *game)
 	find_player(game);
     flood_fill(game, game->player_y, game->player_x); 
         x = 0;
-	//mettre end_game au lieu des printf a chaque fois
 	if (!check_sides(tab) || !check_top_bot(tab, file))
 		end_game(game, "Error\nThe map must contain only 1 (walls) on each sides\n", 1);
 	else if (!check_rectangle(tab))
@@ -88,7 +87,7 @@ int	error_check(char **tab, char *file, t_game *game)
 		end_game(game, "Error\nThere is no path to collect all the coins and leave out\n", 1);
 	else if (!check_exit_number(tab))
 		end_game(game, "Error\nYou need to have only one Exit in ur map\n", 1);
-	else if (!load_map(file))
+	else if (!game->map)
 		end_game(game, "Error\nThe map load failed\n", 1);
 	else if (!set_map_width_height(game))
 		end_game(game, "Error\nThe map do not respect the size rules : Max Width = 40 characteres Max Height = 21 characters\n", 1);

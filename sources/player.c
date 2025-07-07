@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 02:49:36 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/01 11:27:26 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/07 09:46:05 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void    find_player(t_game *game)
 
 void    move_player(t_game *game, int dy, int dx)
 {
-	int 	new_x;
-	int 	new_y;
+	int 	new_x = 0;
+	int 	new_y = 0;
 	new_x = game->player_x + dx;
 	new_y = game->player_y + dy;
 	char	next_tile = game->map[new_y][new_x];

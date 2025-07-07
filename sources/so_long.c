@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:26:15 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/06 18:55:46 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/07 09:55:09 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,16 @@ int	main(int argc, char **argv)
 	t_game	*game;
 
 	game = malloc(sizeof(t_game));
+	init_game(game);
 	game->mlx = mlx_init();
 	if (check_command_line_params(argc, argv))
 		game->map = load_map(argv[1]);
 	else
-		return (free(game), 1);
+		return (end_game(game, "Error\n", 1), 1);
 	if (!error_check(game->map, argv[1], game))
 	{
-		free_map(game->map);
-		free(game);
+		// free_map(game->map);
+		// free(game);
 		return (1);
 	}
 	game->win = mlx_new_window(game->mlx, game->win_width , game->win_height, "So Long");
@@ -55,6 +56,5 @@ int	main(int argc, char **argv)
 	mlx_hook(game->win, 17, 0, exit_game, game);
 	//erreur sur les premieres entrees clavier --> mlx_key_hook_loop ??
 	mlx_loop(game->mlx);
-	printf("je suis la\n");
 	//makefile -> rajouter une regle pour make dans mlx
 }
