@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:28:26 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/07 09:55:58 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:22:36 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_textures
 	void	*wall_image;
 	void	*exit_image;
 	void	*floor_image;
+	void	*villain_image;
 }	t_textures;
 
 
@@ -42,6 +43,7 @@ typedef struct s_game
 	t_textures	tex;
 	char		**map;
 	char		**dup_map;
+	int			nb_lives;
 	int			moves;
 	int			map_width;
 	int			map_height;
