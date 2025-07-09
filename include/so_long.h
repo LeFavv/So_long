@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:28:26 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/09 05:44:01 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/09 11:52:02 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,7 @@ typedef struct s_textures_bonus
 	void	*seven;
 	void	*eight;
 	void	*nine;
-	void	*heart_full;
-	void	*heart_empty;
+	void	*heart;
 } t_textures_bonus;
 
 typedef struct s_game
@@ -58,6 +57,7 @@ typedef struct s_game
 	void		*win;
 	t_textures	tex;
 	t_textures_bonus tex_bonus;
+	char		*mouv;
 	char		**map;
 	char		**dup_map;
 	int			nb_lives;
@@ -98,7 +98,7 @@ int		nb_line(char *file);
 char	**load_map(char *file);
 void	free_map(char **map);
 int		check_rectangle(char **map);
-int		check_top_bot(char **map, char *file);
+int		check_top_bot(char **map, char *file, t_game *game);
 int		check_sides(char **map);
 int		check_name(char *file);
 int		check_valide_cases(char **map);
@@ -108,6 +108,12 @@ int		check_exit_number(char **map);
 int		error_check(char **tab, char *file, t_game *game);
 int		check_command_line_params(int argc, char **argv);
 void	remove_newline(char *line);
+
+//bonus
+void	render_map_bonus(t_game *game);
+void	render_map_number_move_bonus(t_game *game, char *str, int i, int j);
+void	init_image_bonus(t_game *game);
+char	*ft_itoa_bonus(int nb);
 
 
 //end

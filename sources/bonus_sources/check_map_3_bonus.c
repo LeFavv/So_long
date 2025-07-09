@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:31:15 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/09 03:04:59 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/09 11:51:34 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		check_exit_number(char **map);
 int		error_check(char **tab, char *file, t_game *game);
 void	remove_newline(char *line);
-int		check_top_bot(char **map, char *file);
+int		check_top_bot(char **map, char *file, t_game *game);
 
 void	remove_newline(char *line)
 {
@@ -47,7 +47,7 @@ int	check_exit_number(char **map)
 		return (0);
 	return (1);
 }
-int	check_top_bot(char **map, char *file)
+int	check_top_bot(char **map, char *file, t_game *game)
 {
 	int	i;
 	int	bot;
@@ -67,6 +67,7 @@ int	check_top_bot(char **map, char *file)
 			return (0);
 		i++;
 	}
+	game->map_height = bot;
 	return (1);
 }
 //exit code 1 = failure 0 = success
@@ -77,7 +78,7 @@ int	error_check(char **tab, char *file, t_game *game)
 	find_player(game);
     flood_fill(game, game->player_y, game->player_x); 
         x = 0;
-	if (!check_sides(tab) || !check_top_bot(tab, file))
+	if (!check_sides(tab) || !check_top_bot(tab, file, game))
 		end_game(game, "Error\nThe map must contain only 1 (walls) on each sides\n", 1);
 	else if (!check_rectangle(tab))
 		end_game(game, "Error\nThe map must be a rectangle\n", 1);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keyhook.c                                          :+:      :+:    :+:   */
+/*   keyhook_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 03:08:20 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/06 18:52:02 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/09 12:36:20 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,41 @@ void	destroy_image(t_game *game)
 		mlx_destroy_image(game->mlx, game->tex.floor_image);
 }
 
+void	destroy_image_bonus(t_game *game)
+{
+	if (game->tex_bonus.zero)
+		mlx_destroy_image(game->mlx, game->tex_bonus.zero);
+	if (game->tex_bonus.one)
+		mlx_destroy_image(game->mlx, game->tex_bonus.one);
+	if (game->tex_bonus.two)
+		mlx_destroy_image(game->mlx, game->tex_bonus.two);
+	if (game->tex_bonus.three)
+		mlx_destroy_image(game->mlx, game->tex_bonus.three);
+	if (game->tex_bonus.four)
+		mlx_destroy_image(game->mlx, game->tex_bonus.four);
+	if (game->tex_bonus.five)
+		mlx_destroy_image(game->mlx, game->tex_bonus.five);
+	if (game->tex_bonus.six)
+		mlx_destroy_image(game->mlx, game->tex_bonus.six);
+	if (game->tex_bonus.seven)
+		mlx_destroy_image(game->mlx, game->tex_bonus.seven);
+	if (game->tex_bonus.eight)
+		mlx_destroy_image(game->mlx, game->tex_bonus.eight);
+	if (game->tex_bonus.nine)
+		mlx_destroy_image(game->mlx, game->tex_bonus.nine);
+	if (game->tex_bonus.heart)
+		mlx_destroy_image(game->mlx, game->tex_bonus.heart);
+	if (game->tex_bonus.villain_image)
+		mlx_destroy_image(game->mlx, game->tex_bonus.villain_image);
+}
+//detruire images bonus
 int	end_game(t_game *game, char *msg, int exit_code)
 {
 	if (game)
 	{
 		if (game->map)
 			free_map(game->map);
+		destroy_image_bonus(game);
 		destroy_image(game);
 		if (game->win)
 			mlx_destroy_window(game->mlx, game->win);
@@ -71,6 +100,7 @@ int	exit_game(t_game *game)
 			game->map = NULL;	
 		}
 		destroy_image(game);
+		destroy_image_bonus(game);
 		if (game->win)
 			mlx_destroy_window(game->mlx, game->win);
 		if (game->mlx)

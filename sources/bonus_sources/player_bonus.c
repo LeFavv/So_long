@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 02:49:36 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/07 15:41:33 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/09 11:41:41 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,10 @@ void    move_player(t_game *game, int dy, int dx)
 	game->player_x = new_x;
 	game->player_y = new_y;
 	game->moves++;
+	game->mouv = ft_itoa_bonus(game->moves);
 	printf("Moves : %d\n", game->moves);
 	render_map(game);
+	render_map_bonus(game);
+	render_map_number_move_bonus(game, game->mouv, new_x, new_y);
+	free(game->mouv);
 }
