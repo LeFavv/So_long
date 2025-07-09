@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 03:37:08 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/07 15:44:58 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/09 03:28:40 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,26 @@ void	render_map(t_game *game)
 				mlx_put_image_to_window(game->mlx, game->win, game->tex.collectibles_image, x * TILE_SIZE, y * TILE_SIZE);
 			else if (game->map[y][x] == 'E')
 				mlx_put_image_to_window(game->mlx, game->win, game->tex.exit_image, x * TILE_SIZE, y * TILE_SIZE);
+			//render_map_bonus
 			else if (game->map[y][x] == 'V')
-				mlx_put_image_to_window(game->mlx, game->win, game->tex.villain_image, x * TILE_SIZE, y * TILE_SIZE);				
+				mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.villain_image, x * TILE_SIZE, y * TILE_SIZE);				
 			x++;
 		}
 		y++;
 	}	
 }
 
+//mettre les coeurs full
+void	render_map_bonus(t_game *game)
+{
+	mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.heart_full, 0 * TILE_SIZE, 0 * TILE_SIZE);
+	mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.heart_full, 1 * TILE_SIZE, 0 * TILE_SIZE);
+	mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.heart_full, 2 * TILE_SIZE, 0 * TILE_SIZE);
+
+
+}
+
+//faire un init_image bonus
 void	init_image(t_game *game)
 {
 	int	w;
@@ -54,7 +66,8 @@ void	init_image(t_game *game)
 	game->tex.floor_image = mlx_xpm_file_to_image(game->mlx, "texture/floor.xpm", &w, &h);
 	game->tex.player_image = mlx_xpm_file_to_image(game->mlx, "texture/player.xpm", &w, &h);
 	game->tex.wall_image = mlx_xpm_file_to_image(game->mlx, "texture/wall.xpm", &w, &h);
-	game->tex.villain_image = mlx_xpm_file_to_image(game->mlx, "texture/villain.xpm", &w, &h);	
+	game->tex_bonus.villain_image = mlx_xpm_file_to_image(game->mlx, "texture/villain.xpm", &w, &h);
+	//villain a mettre dans bonus
 }
 
 int    set_map_width_height(t_game *game)
