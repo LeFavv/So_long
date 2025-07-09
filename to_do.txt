@@ -1,9 +1,3 @@
-Check de collectibles fait 
-Check ennemies dans le check map bonus aussi
-Faire des image de nombres et faire une fonction pour les contenir
-Faire une fonction et gerer pour si le joueur touche un ennemi
-Gerer les sprites
-Message de victoire  defaite
-Enlever les printf pour mettre des ft_printf
-make la librairie mlx depuis le makefile
-+ Faire tous les tests avec une multitude de maps
+Bien check chaque image
+Tout norme 
+check les possibles erreurs

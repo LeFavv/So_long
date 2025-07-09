@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 02:49:36 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/09 14:02:50 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/09 15:03:11 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void    find_player(t_game *game)
 		y++;
 	}
 }
-//marche pas
+
 int	update(void *param)
 {
 	t_game *game = (t_game *)param;

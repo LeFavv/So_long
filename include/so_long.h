@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:28:26 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/09 13:35:31 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/09 15:32:49 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,26 @@ void	render_map_number_move_bonus(t_game *game, char *str, int i, int j);
 void	init_image_bonus(t_game *game);
 char	*ft_itoa_bonus(int nb);
 int		update(void *param);
+void    ft_get_img_floor(t_game *game);
+void    ft_get_img_collectibles(t_game *game);
+void    ft_get_img_exit(t_game *game);
+void    ft_get_img_player(t_game *game);
+void    ft_get_img_wall(t_game *game);
+void    ft_get_img_villain(t_game *game);
+void    ft_get_img_zero(t_game *game);
+void    ft_get_img_one(t_game *game);
+void    ft_get_img_two(t_game *game);
+void    ft_get_img_three(t_game *game);
+void    ft_get_img_four(t_game *game);
+void    ft_get_img_five(t_game *game);
+void    ft_get_img_six(t_game *game);
+void    ft_get_img_seven(t_game *game);
+void    ft_get_img_eight(t_game *game);
+void    ft_get_img_nine(t_game *game);
+void    ft_get_img_touched(t_game *game);
+void    ft_get_img_heart(t_game *game);
+
+
 
 
 //end
