@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:31:12 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/07 09:34:27 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/09 03:04:28 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,12 @@ int	check_valide_cases(char **map)
 	int	j;
 	int	nb_p;
 	int	nb_e;
+	int nb_c;
 
 	i = 0;
 	nb_e = 0;
 	nb_p = 0;
+	nb_c = 0;
 	while (map[i])
 	{
 		j = 0;
@@ -77,15 +79,17 @@ int	check_valide_cases(char **map)
 				nb_p += 1;//verif qu'il y ait au moins un collectible
 			else if (map[i][j] == 'E')
 				nb_e += 1;
-			else if (!(map[i][j] == '1' || map[i][j] == '0' || map[i][j] == 'C'))
+			else if (map[i][j] == 'C')
+				nb_c += 1;
+			else if (!(map[i][j] == '1' || map[i][j] == '0'))
 				return (0);	
 			j++;
 		}
 		i++;
 	}
-	if (nb_p != 1 || nb_e != 1)
-			return (0);
-		return (1);
+	if (nb_p == 1 && nb_e == 1 && nb_c >= 1)
+			return (1);
+		return (0);
 }
 
 void	flood_fill(t_game *game, int player_y, int player_x)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map_3.c                                      :+:      :+:    :+:   */
+/*   check_map_3_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:31:15 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/07 09:45:23 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/09 03:04:59 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	error_check(char **tab, char *file, t_game *game)
 	else if (!check_rectangle(tab))
 		end_game(game, "Error\nThe map must be a rectangle\n", 1);
 	else if (!check_valide_cases(tab))
-		end_game(game, "Error\nYou must fill the map with 0, 1, P, C or E\n", 1);
+		end_game(game, "Error\nYou must fill the map with 0, 1, V, only one P, a least one C and only one E\n", 1);
 	else if (!check_flood_fill(game))
 		end_game(game, "Error\nThere is no path to collect all the coins and leave out\n", 1);
 	else if (!check_exit_number(tab))
