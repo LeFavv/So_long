@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:28:26 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/09 04:30:56 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/09 05:44:01 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ typedef struct s_textures
 typedef struct s_textures_bonus
 {
 	void	*villain_image;
-	void	*hurt_player;
 	void	*zero;
 	void	*one;
 	void	*two;

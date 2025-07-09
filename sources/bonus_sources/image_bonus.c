@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 03:37:08 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/09 04:48:36 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/09 05:49:55 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ void	render_map(t_game *game)
 				mlx_put_image_to_window(game->mlx, game->win, game->tex.exit_image, x * TILE_SIZE, y * TILE_SIZE);
 			//render_map_bonus
 			else if (game->map[y][x] == 'V')
-				mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.villain_image, x * TILE_SIZE, y * TILE_SIZE);				
+				mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.villain_image, x * TILE_SIZE, y * TILE_SIZE);
+			mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.heart_empty, 0 * TILE_SIZE, 0 * TILE_SIZE);
+			mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.heart_empty, 1 * TILE_SIZE, 0 * TILE_SIZE);		
+			mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.heart_empty, 2 * TILE_SIZE, 0 * TILE_SIZE);		
 			x++;
 		}
 		y++;
@@ -48,9 +51,19 @@ void	render_map(t_game *game)
 //mettre les coeurs full
 void	render_map_bonus(t_game *game)
 {
-	mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.heart_full, 0 * TILE_SIZE, 0 * TILE_SIZE);
-	mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.heart_full, 1 * TILE_SIZE, 0 * TILE_SIZE);
-	mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.heart_full, 2 * TILE_SIZE, 0 * TILE_SIZE);
+	if (game->nb_lives == 3)
+	{
+		mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.heart_full, 0 * TILE_SIZE, 0 * TILE_SIZE);
+		mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.heart_full, 1 * TILE_SIZE, 0 * TILE_SIZE);
+		mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.heart_full, 2 * TILE_SIZE, 0 * TILE_SIZE);
+	}
+	else if (game->nb_lives == 2)
+	{
+		mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.heart_full, 0 * TILE_SIZE, 0 * TILE_SIZE);
+		mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.heart_full, 1 * TILE_SIZE, 0 * TILE_SIZE);		
+	}
+	else if (game->nb_lives == 1)
+		mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.heart_full, 0 * TILE_SIZE, 0 * TILE_SIZE);
 }
 
 //nouvelle fonction (lignes trop longues et limite de 25 lignes donc a voir...)
@@ -116,7 +129,6 @@ void	init_image_bonus(t_game *game)
 	game->tex_bonus.nine = mlx_xpm_file_to_image(game->mlx, "texture/nine.xpm", &w, &h);
 	game->tex_bonus.heart_full = mlx_xpm_file_to_image(game->mlx, "texture/heart_full.xpm", &w, &h);
 	game->tex_bonus.heart_empty = mlx_xpm_file_to_image(game->mlx, "texture/heart_empty.xpm", &w, &h);
-	game->tex_bonus.hurt_player = mlx_xpm_file_to_image(game->mlx, "texture/player_hurt.xpm", &w, &h);
 }
 
 int    set_map_width_height(t_game *game)
