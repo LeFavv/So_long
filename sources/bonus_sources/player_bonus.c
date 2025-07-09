@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 02:49:36 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/09 11:41:41 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/09 14:02:50 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,19 @@ void    find_player(t_game *game)
 		y++;
 	}
 }
+//marche pas
+int	update(void *param)
+{
+	t_game *game = (t_game *)param;
+	if (game->touched_timer > 0)
+	{
+		mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.touched, game->player_x * TILE_SIZE, game->player_y * TILE_SIZE);
+		game->touched_timer--;
+	}
+		else
+		mlx_put_image_to_window(game->mlx, game->win, game->tex.player_image, game->player_x * TILE_SIZE, game->player_y * TILE_SIZE);
+	return (0);	
+}
 
 void    move_player(t_game *game, int dy, int dx)
 {
@@ -57,6 +70,7 @@ void    move_player(t_game *game, int dy, int dx)
 	{
 		game->nb_lives -= 1;
 		printf("\033[31mAIE ! Il ne te reste que %d vie\nAtttention a toi mon gourmand\033[0m\n", game->nb_lives);
+		game->touched_timer = 6000;
 		if (game->nb_lives == 0)
 			end_game(game, "\033[31mLOOSER ! T'AS PERDU\n\033[0m\n", 1);
 		return;

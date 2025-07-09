@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 03:37:08 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/09 11:57:18 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/09 14:02:23 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,13 @@ void	render_map_bonus(t_game *game)
 	else if (game->nb_lives == 2)
 	{
 		mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.heart, 0 * TILE_SIZE, 0 * TILE_SIZE);
-		mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.heart, 1 * TILE_SIZE, 0 * TILE_SIZE);		
+		mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.heart, 1 * TILE_SIZE, 0 * TILE_SIZE);	
 	}
 	else if (game->nb_lives == 1)
+	{
 		mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.heart, 0 * TILE_SIZE, 0 * TILE_SIZE);
+	
+	}
 }
 
 //nouvelle fonction (lignes trop longues et limite de 25 lignes donc a voir...)
@@ -127,6 +130,7 @@ void	init_image_bonus(t_game *game)
 	game->tex_bonus.eight = mlx_xpm_file_to_image(game->mlx, "texture/eight.xpm", &w, &h);
 	game->tex_bonus.nine = mlx_xpm_file_to_image(game->mlx, "texture/nine.xpm", &w, &h);
 	game->tex_bonus.heart = mlx_xpm_file_to_image(game->mlx, "texture/heart.xpm", &w, &h);
+	game->tex_bonus.touched = mlx_xpm_file_to_image(game->mlx, "texture/touched.xpm", &w, &h); //penser a la detruire
 }
 
 int    set_map_width_height(t_game *game)

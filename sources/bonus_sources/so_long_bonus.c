@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:26:15 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/09 11:29:32 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/09 13:31:55 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	main(int argc, char **argv)
 	init_image_bonus(game);
 	render_map(game);
 	render_map_bonus(game);
+	mlx_loop_hook(game->mlx, update, game);
 	mlx_key_hook(game->win, key_hook, game);
 	mlx_hook(game->win, 17, 0, exit_game, game);
 	//erreur sur les premieres entrees clavier --> mlx_key_hook_loop ??

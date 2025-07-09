@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:28:26 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/09 11:52:02 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/09 13:35:31 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ typedef struct s_textures
 	void	*wall_image;
 	void	*exit_image;
 	void	*floor_image;
-//	void	*villain_image;
 }	t_textures;
 
 typedef struct s_textures_bonus
@@ -49,6 +48,7 @@ typedef struct s_textures_bonus
 	void	*eight;
 	void	*nine;
 	void	*heart;
+	void	*touched;
 } t_textures_bonus;
 
 typedef struct s_game
@@ -68,6 +68,7 @@ typedef struct s_game
     int         win_height;
 	int			player_y;
 	int			player_x;
+	int			touched_timer;
 	int			collectibles;
 }	t_game;
 
@@ -114,6 +115,7 @@ void	render_map_bonus(t_game *game);
 void	render_map_number_move_bonus(t_game *game, char *str, int i, int j);
 void	init_image_bonus(t_game *game);
 char	*ft_itoa_bonus(int nb);
+int		update(void *param);
 
 
 //end

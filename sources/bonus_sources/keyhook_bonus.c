@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 03:08:20 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/09 12:36:20 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/09 13:59:34 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	destroy_image(t_game *game)
 		mlx_destroy_image(game->mlx, game->tex.exit_image);
 	if (game->tex.floor_image)
 		mlx_destroy_image(game->mlx, game->tex.floor_image);
+	if (game->tex_bonus.touched)
+		mlx_destroy_image(game->mlx, game->tex_bonus.touched);
 }
 
 void	destroy_image_bonus(t_game *game)

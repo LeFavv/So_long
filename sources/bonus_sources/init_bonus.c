@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 09:52:02 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/07 15:22:52 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/09 13:30:22 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,5 @@ void    init_game(t_game *game)
     game->player_x = 0;
     game->player_y = 0;
     game->collectibles = 0;
+    game->touched_timer = 0;
 }
