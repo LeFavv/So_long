@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:31:15 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/09 11:51:34 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/10 19:15:10 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,14 @@ int	check_top_bot(char **map, char *file, t_game *game)
 int	error_check(char **tab, char *file, t_game *game)
 {
     game->dup_map = dup_map(tab);
-    int x;
 	find_player(game);
     flood_fill(game, game->player_y, game->player_x); 
-        x = 0;
 	if (!check_sides(tab) || !check_top_bot(tab, file, game))
-		end_game(game, "Error\nThe map must contain only 1 (walls) on each sides\n", 1);
+		end_game(game,"Error\nThe map must contain only 1 (walls) on each sides\n", 1);
 	else if (!check_rectangle(tab))
 		end_game(game, "Error\nThe map must be a rectangle\n", 1);
-	else if (!check_valide_cases(tab))
-		end_game(game, "Error\nYou must fill the map with 0, 1, V, only one P, a least one C and only one E\n", 1);
+	else if (!check_valide_cases(tab, game))
+		end_game(game,"Error\nYou must fill the map with 0, 1, V,only one P, a least one C and only one E\n", 1);
 	else if (!check_flood_fill(game))
 		end_game(game, "Error\nThere is no path to collect all the coins and leave out\n", 1);
 	else if (!check_exit_number(tab))

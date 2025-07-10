@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:28:26 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/09 15:32:49 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/10 19:02:33 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,9 @@ typedef struct s_game
 	int			player_x;
 	int			touched_timer;
 	int			collectibles;
+	int			nb_c;
+	int			nb_p;
+	int			nb_e;
 }	t_game;
 
 //utils
@@ -102,7 +105,7 @@ int		check_rectangle(char **map);
 int		check_top_bot(char **map, char *file, t_game *game);
 int		check_sides(char **map);
 int		check_name(char *file);
-int		check_valide_cases(char **map);
+int		check_valide_cases(char **map, t_game *game);
 void	flood_fill(t_game *game, int player_y, int player_x);
 int		check_flood_fill(t_game *game);
 int		check_exit_number(char **map);
