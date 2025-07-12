@@ -6,11 +6,14 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 03:37:08 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/13 00:55:24 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/13 01:13:15 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+//ce fichier est obsolete mais garder comme backup au cas ou
+//est pas remplace par 5 fichiers get_image_bonus_*.c + image_bonus_new_version.c
 
 int    set_map_width_height(t_game *game);
 void	init_image(t_game *game);
