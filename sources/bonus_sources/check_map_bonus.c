@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:43:25 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/10 21:05:50 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/12 22:34:52 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ char	**load_map(char *file)
 	// line = get_next_line(fd);
 	// while (line)
 	// {
-	// 	game->map[i] = line;
+	// 	map[i] = line;
 	// 	line = get_next_line(fd);
 	// 	i++;
 	// }

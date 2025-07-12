@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 03:37:08 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/09 15:34:29 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/12 22:19:42 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	render_map(t_game *game)
 	{
 		x = 0;
 		while(game->map[y][x])
-		{//possible de rajouter une fontion ici pour mettre plus d'images (perso blesse et les nombres ?)
+		{
 			if (game->map[y][x] == '1')
 				mlx_put_image_to_window(game->mlx, game->win, game->tex.wall_image, x * TILE_SIZE, y * TILE_SIZE);
 			else if (game->map[y][x] == '0')
@@ -44,27 +44,54 @@ void	render_map(t_game *game)
 	}	
 }
 
+void	ft_put_image(t_game *game, int index, int y, int x)
+{
+	if (index == 0)
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->tex.wall_image, x * TILE_SIZE, y * TILE_SIZE);
+	else if (index == 1)
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->tex.floor_image, x * TILE_SIZE, y * TILE_SIZE);
+	else if (index == 2)
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->tex.player_image, x * TILE_SIZE, y * TILE_SIZE);
+	else if (index == 3)
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->tex.collectibles_image, x * TILE_SIZE, y * TILE_SIZE);
+	else if (index == 4)
+		mlx_put_image_to_window(game->mlx,
+			game->win, game->tex.exit_image, x * TILE_SIZE, y * TILE_SIZE);
+	else if (index == 5)
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->tex_bonus.villain_image, x * TILE_SIZE, y * TILE_SIZE);
+}
+
 void	render_map_bonus(t_game *game)
 {
 	if (game->nb_lives == 3)
 	{
-		mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.heart, 0 * TILE_SIZE, 0 * TILE_SIZE);
-		mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.heart, 1 * TILE_SIZE, 0 * TILE_SIZE);
-		mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.heart, 2 * TILE_SIZE, 0 * TILE_SIZE);
+		mlx_put_image_to_window(game->mlx,
+			game->win, game->tex_bonus.heart, 0 * TILE_SIZE, 0 * TILE_SIZE);
+		mlx_put_image_to_window(game->mlx,
+			game->win, game->tex_bonus.heart, 1 * TILE_SIZE, 0 * TILE_SIZE);
+		mlx_put_image_to_window(game->mlx,
+			game->win, game->tex_bonus.heart, 2 * TILE_SIZE, 0 * TILE_SIZE);
 	}
 	else if (game->nb_lives == 2)
 	{
-		mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.heart, 0 * TILE_SIZE, 0 * TILE_SIZE);
-		mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.heart, 1 * TILE_SIZE, 0 * TILE_SIZE);	
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->tex_bonus.heart, 0 * TILE_SIZE, 0 * TILE_SIZE);
+		mlx_put_image_to_window(game->mlx,
+			game->win, game->tex_bonus.heart, 1 * TILE_SIZE, 0 * TILE_SIZE);	
 	}
 	else if (game->nb_lives == 1)
 	{
-		mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.heart, 0 * TILE_SIZE, 0 * TILE_SIZE);
-	
+		mlx_put_image_to_window(game->mlx,
+			game->win, game->tex_bonus.heart, 0 * TILE_SIZE, 0 * TILE_SIZE);
 	}
 }
 
-//nouvelle fonction (lignes trop longues et limite de 25 lignes donc a voir...)
+//deux fonctions de faite.. a implementer
 void	render_map_number_move_bonus(t_game *game, char *str, int i, int j)
 {
 	i = 0;
@@ -96,6 +123,46 @@ void	render_map_number_move_bonus(t_game *game, char *str, int i, int j)
 		i++;
 		j--;
 	}
+}
+
+void	ft_put_image_number_z_to_f(t_game *game, int index, int y, int x, int j)
+{
+	if (index == 0)
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->tex_bonus.zero, (game->map_width - j) * TILE_SIZE, game->map_height * TILE_SIZE);
+	else if (index == 1)
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->tex_bonus.one, (game->map_width - j) * TILE_SIZE, game->map_height * TILE_SIZE);
+	else if (index == 2)		
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->tex_bonus.two, (game->map_width - j) * TILE_SIZE, game->map_height * TILE_SIZE);
+	else if (index == 3)
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->tex_bonus.three, (game->map_width - j) * TILE_SIZE, game->map_height * TILE_SIZE);
+	else if (index == 4)
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->tex_bonus.four, (game->map_width - j) * TILE_SIZE, game->map_height * TILE_SIZE);
+	else if (index == 5)
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->tex_bonus.five, (game->map_width - j) * TILE_SIZE, game->map_height * TILE_SIZE);
+	else if (index > 5)
+		ft_put_image_number_six_to_nine(game, index, y, x, j);
+}
+
+void	ft_put_image_number_six_to_nine(t_game *game, int index, int y, int x, int j)
+{
+	if (index == 6)
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->tex_bonus.six, (game->map_width - j) * TILE_SIZE, game->map_height * TILE_SIZE);
+	else if (index == 7)
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->tex_bonus.seven, (game->map_width - j) * TILE_SIZE, game->map_height * TILE_SIZE);
+	else if (index == 8)
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->tex_bonus.eight, (game->map_width - j) * TILE_SIZE, game->map_height * TILE_SIZE);
+	else if (index == 9)
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->tex_bonus.nine, (game->map_width - j) * TILE_SIZE, game->map_height * TILE_SIZE);	
 }
 
 //faire un init_image bonus
