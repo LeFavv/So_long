@@ -6,11 +6,16 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 01:00:22 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/13 01:02:48 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/13 01:16:22 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	ft_put_image_number_six_to_nine(t_game *game, int index, int j);
+void	init_image(t_game *game);
+void	init_image_bonus(t_game *game);
+int    set_map_width_height(t_game *game);
 
 void	ft_put_image_number_six_to_nine(t_game *game, int index, int j)
 {
