@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:31:12 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/10 19:12:13 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/13 12:01:05 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,8 @@ void	flood_fill(t_game *game, int player_y, int player_x)
 {
 	find_player(game);
 	if (game->dup_map[player_y][player_x] == '1'
-	|| game->dup_map[player_y][player_x] == 'F')
+	|| game->dup_map[player_y][player_x] == 'F'
+	|| game->dup_map[player_y][player_x] == 'V')
 		return ;
 	if (game->dup_map[player_y][player_x] == 'E')
 	{

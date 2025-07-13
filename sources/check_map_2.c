@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:31:12 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/09 03:04:28 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/13 12:00:05 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		check_sides(char **map);
 int		check_name(char *file);
-int		check_valide_cases(char **map);
+int		check_valide_cases(char **map, t_game *game);
 void	flood_fill(t_game *game, int player_y, int player_x);
 int		check_flood_fill(t_game *game);
 
@@ -57,39 +57,32 @@ int	check_name(char *file)
 		return (0);
 }
 
-int	check_valide_cases(char **map)
+int	check_valide_cases(char **map, t_game *game)
 {
 	int	i;
 	int	j;
-	int	nb_p;
-	int	nb_e;
-	int nb_c;
 
-	i = 0;
-	nb_e = 0;
-	nb_p = 0;
-	nb_c = 0;
-	while (map[i])
+	i = -1;
+	while (map[++i])
 	{
 		j = 0;
 		remove_newline(map[i]);
 		while (map[i][j])
 		{
-			if (map[i][j] == 'P')//faire une fonction pour P et pour E pour gagner 2 lignes
-				nb_p += 1;//verif qu'il y ait au moins un collectible
+			if (map[i][j] == 'P')
+				game->nb_p += 1;
 			else if (map[i][j] == 'E')
-				nb_e += 1;
+				game->nb_e += 1;
 			else if (map[i][j] == 'C')
-				nb_c += 1;
+				game->nb_c += 1;
 			else if (!(map[i][j] == '1' || map[i][j] == '0'))
-				return (0);	
+				return (0);
 			j++;
 		}
-		i++;
 	}
-	if (nb_p == 1 && nb_e == 1 && nb_c >= 1)
-			return (1);
-		return (0);
+	if (game->nb_p == 1 && game->nb_e == 1 && game->nb_c >= 1)
+		return (1);
+	return (0);
 }
 
 void	flood_fill(t_game *game, int player_y, int player_x)

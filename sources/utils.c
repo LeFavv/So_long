@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:27:50 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/01 14:11:02 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/13 12:15:12 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ char	**dup_map(char **map)
 	int		i;
 
 	i = 0;
-
 	while (map[i])
 		i++;
 	dup = malloc(sizeof(char *) * (i + 1));
@@ -30,11 +29,8 @@ char	**dup_map(char **map)
 		dup[i] = ft_strdup(map[i]);
 		if (!dup[i])
 		{
-			while (i >= 0)
-			{
+			while (i-- >= 0)
 				free(dup[i]);
-				i--;
-			}
 			free(dup);
 		}
 		i++;
