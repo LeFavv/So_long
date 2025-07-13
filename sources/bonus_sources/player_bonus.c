@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 02:49:36 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/13 13:00:07 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/13 15:56:11 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	move_player_bis(t_game *game, int new_y, int new_x, char next_tile)
 	else if (next_tile == 'V')
 	{
 		game->nb_lives -= 1;
-		ft_printf("\033[31mAIE ! Plus %d vie\n\033[0m\n", game->nb_lives);
+		ft_printf("\033[31mAIE ! Plus que %d vie\n\033[0m\n", game->nb_lives);
 		game->touched_timer = 6000;
 		if (game->nb_lives == 0)
 			end_game(game, "\033[31mLOOSER ! T'AS PERDU\n\033[0m\n", 1);

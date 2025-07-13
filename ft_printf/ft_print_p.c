@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 16:36:04 by vafavard          #+#    #+#             */
-/*   Updated: 2025/05/13 16:39:07 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/13 15:11:52 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,21 @@ int	print_p(uintptr_t addr)
 	return (count);
 }
 
-int check_value(uintptr_t temp)
+int	check_value(uintptr_t temp)
 {
-    int count;
+	int	count;
 
-    count = 0;
-    if (temp != 0)
-		{
-			write (1, "0x", 2);
-			count += 2;
-            count += print_p(temp);
-        }
-    else
-    {
-        write(1, "(nil)", 5);
+	count = 0;
+	if (temp != 0)
+	{
+		write (1, "0x", 2);
+		count += 2;
+		count += print_p(temp);
+	}
+	else
+	{
+		write(1, "(nil)", 5);
 		count += 5;
-    }
-    return (count);
+	}
+	return (count);
 }

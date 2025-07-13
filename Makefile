@@ -6,7 +6,7 @@
 #    By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/13 18:13:53 by vafavard          #+#    #+#              #
-#    Updated: 2025/07/13 14:04:46 by vafavard         ###   ########.fr        #
+#    Updated: 2025/07/13 15:45:53 by vafavard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ $(NAME): $(OBJS) $(PRINTF_ARCHIVE) mlx
 
 bonus: $(NAME_BONUS)
 
-$(NAME_BONUS): $(BONUS_OBJS) $(PRINTF_ARCHIVE)
+$(NAME_BONUS): $(BONUS_OBJS) $(PRINTF_ARCHIVE) mlx
 	$(CC) $(CFLAGS) $(INCLUDES) $(BONUS_OBJS) $(PRINTF_ARCHIVE) -Lminilibx-linux -lmlx -L/usr/lib -Iminilibx-linux -lXext -lX11 -lm -lz -o $(NAME_BONUS)
 
 %.o: %.c

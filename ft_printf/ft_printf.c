@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 14:02:42 by vafavard          #+#    #+#             */
-/*   Updated: 2025/05/13 16:42:19 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/13 15:12:31 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	ft_percent(void)
 
 int	display_specials(const char *str, va_list *args)
 {
-	int	count;
+	int			count;
+	uintptr_t	temp;
 
 	count = 0;
 	if (*str == 'c')
@@ -42,7 +43,7 @@ int	display_specials(const char *str, va_list *args)
 		count = print_hex_top(va_arg(*args, int));
 	else if (*str == 'p')
 	{
-		uintptr_t	temp = va_arg(*args, uintptr_t);
+		temp = va_arg(*args, uintptr_t);
 		count = check_value(temp);
 	}
 	else if (*str == '%')

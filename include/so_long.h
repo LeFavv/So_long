@@ -6,25 +6,24 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:28:26 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/13 13:58:15 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/13 15:39:40 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef SO_LONG_H
+#ifndef SO_LONG_H
 # define SO_LONG_H
 
-#include "get_next_line.h"
-#include "../ft_printf/ft_printf.h"
-#include "../minilibx-linux/mlx.h"
-#include <unistd.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <stdio.h>
+# include "get_next_line.h"
+# include "../ft_printf/ft_printf.h"
+# include "../minilibx-linux/mlx.h"
+# include <unistd.h>
+# include <stdlib.h>
+# include <fcntl.h>
+# include <stdio.h>
 
 # define TILE_SIZE 64
 # define MAX_WIDTH 40
 # define MAX_HEIGHT 21
-
 
 typedef struct s_textures
 {
@@ -50,49 +49,58 @@ typedef struct s_textures_bonus
 	void	*nine;
 	void	*heart;
 	void	*touched;
-} t_textures_bonus;
+}	t_textures_bonus;
 
 typedef struct s_game
 {
-	void		*mlx;
-	void		*win;
-	t_textures	tex;
-	t_textures_bonus tex_bonus;
-	char		*mouv;
-	char		**map;
-	char		**dup_map;
-	int			nb_lives;
-	int			moves;
-	int			map_width;
-	int			map_height;
-    int         win_width;
-    int         win_height;
-	int			player_y;
-	int			player_x;
-	int			touched_timer;
-	int			collectibles;
-	int			nb_c;
-	int			nb_p;
-	int			nb_e;
+	void				*mlx;
+	void				*win;
+	t_textures			tex;
+	t_textures_bonus	tex_bonus;
+	char				*mouv;
+	char				**map;
+	char				**dup_map;
+	int					nb_lives;
+	int					moves;
+	int					map_width;
+	int					map_height;
+	int					win_width;
+	int					win_height;
+	int					player_y;
+	int					player_x;
+	int					touched_timer;
+	int					collectibles;
+	int					nb_c;
+	int					nb_p;
+	int					nb_e;
 }	t_game;
+
+//init
+void	init_game(t_game *game);
 
 //utils
 char	**dup_map(char **map);
 
 //collectibles
-void count_collectibles(t_game *game);
+void	count_collectibles(t_game *game);
 
 //image
 void	render_map(t_game *game);
 void	init_image(t_game *game);
-int    set_map_width_height(t_game *game);
+int		set_map_width_height(t_game *game);
+void	ft_get_img_floor(t_game *game);
+void	ft_get_img_collectibles(t_game *game);
+void	ft_get_img_exit(t_game *game);
+void	ft_get_img_player(t_game *game);
+void	ft_get_img_wall(t_game *game);
 
 //hook
-int key_hook(int keycode, t_game *game);
+int		key_hook(int keycode, t_game *game);
 
 //player
-void    find_player(t_game *game);
-void    move_player(t_game *game, int dy, int dx);
+void	find_player(t_game *game);
+void	move_player(t_game *game, int dy, int dx);
+int		move_player_bis(t_game *game, int new_y, int new_x, char next_tile);
 
 //free
 void	free_dup_map(char **dup);
@@ -118,7 +126,7 @@ void	remove_newline(char *line);
 void	ft_put_image_number_six_to_nine(t_game *game, int index, int j);
 void	init_image(t_game *game);
 void	init_image_bonus(t_game *game);
-int    set_map_width_height(t_game *game);
+int		set_map_width_height(t_game *game);
 void	render_map(t_game *game);
 void	render_map_bonus(t_game *game);
 void	ft_put_image(t_game *game, int index, int y, int x);
@@ -126,34 +134,23 @@ void	render_map_number_move_bonus(t_game *game, char *str, int i, int j);
 void	ft_put_image_number_z_to_f(t_game *game, int index, int j);
 char	*ft_itoa_bonus(int nb);
 int		update(void *param);
-void    ft_get_img_floor(t_game *game);
-void    ft_get_img_collectibles(t_game *game);
-void    ft_get_img_exit(t_game *game);
-void    ft_get_img_player(t_game *game);
-void    ft_get_img_wall(t_game *game);
-void    ft_get_img_villain(t_game *game);
-void    ft_get_img_zero(t_game *game);
-void    ft_get_img_one(t_game *game);
-void    ft_get_img_two(t_game *game);
-void    ft_get_img_three(t_game *game);
-void    ft_get_img_four(t_game *game);
-void    ft_get_img_five(t_game *game);
-void    ft_get_img_six(t_game *game);
-void    ft_get_img_seven(t_game *game);
-void    ft_get_img_eight(t_game *game);
-void    ft_get_img_nine(t_game *game);
-void    ft_get_img_touched(t_game *game);
-void    ft_get_img_heart(t_game *game);
-
-
-
+void	ft_get_img_villain(t_game *game);
+void	ft_get_img_zero(t_game *game);
+void	ft_get_img_one(t_game *game);
+void	ft_get_img_two(t_game *game);
+void	ft_get_img_three(t_game *game);
+void	ft_get_img_four(t_game *game);
+void	ft_get_img_five(t_game *game);
+void	ft_get_img_six(t_game *game);
+void	ft_get_img_seven(t_game *game);
+void	ft_get_img_eight(t_game *game);
+void	ft_get_img_nine(t_game *game);
+void	ft_get_img_touched(t_game *game);
+void	ft_get_img_heart(t_game *game);
 
 //end
 void	destroy_image(t_game *game);
-int	end_game(t_game *game, char *msg, int exit_code);
-
-int	exit_game(t_game *game);
-
-void init_game(t_game *game);
+int		end_game(t_game *game, char *msg, int exit_code);
+int		exit_game(t_game *game);
 
 #endif
