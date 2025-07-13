@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 03:08:20 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/13 12:43:55 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/13 12:58:28 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	end_game(t_game *game, char *msg, int exit_code)
 			free_dup_map(game->dup_map);
 		free(game);
 	}
-	printf("%s", msg);
+	ft_ft_printf("%s", msg);
 	exit(exit_code);
 }
 

@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:26:15 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/13 12:29:13 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/13 12:59:36 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ int	check_command_line_params(int argc, char **argv)
 {
 	if (argc < 2)
 	{
-		printf("Error\nNo map file found\n");
+		ft_printf("Error\nNo map file found\n");
 		return (0);
 	}
 	else if (argc > 2)
 	{
-		printf("Error\nToo many arguments\n");
+		ft_printf("Error\nToo many arguments\n");
 		return (0);
 	}
 	else if (!check_name(argv[1]))
 	{
-		printf("Error\nThe map must be a .ber file\n");
+		ft_printf("Error\nThe map must be a .ber file\n");
 		return (0);
 	}
 	return (1);

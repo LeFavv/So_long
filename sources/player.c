@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 02:49:36 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/13 12:44:38 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/13 12:59:21 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	move_player_bis(t_game *game, int new_y, int new_x, char next_tile)
 	{
 		game->map[new_y][new_x] = '0';
 		game->collectibles--;
-		printf("nb de collectibles : %d\n", game->collectibles);
+		ft_printf("nb de collectibles : %d\n", game->collectibles);
 	}
 	else if (next_tile == 'E')
 	{
@@ -72,6 +72,6 @@ void	move_player(t_game *game, int dy, int dx)
 	game->player_x = new_x;
 	game->player_y = new_y;
 	game->moves++;
-	printf("Moves : %d\n", game->moves);
+	ft_printf("Moves : %d\n", game->moves);
 	render_map(game);
 }
