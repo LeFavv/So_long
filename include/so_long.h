@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:28:26 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/13 12:56:32 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/13 13:58:15 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "get_next_line.h"
 #include "../ft_printf/ft_printf.h"
-#include "../mlx/mlx.h"
+#include "../minilibx-linux/mlx.h"
 #include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>

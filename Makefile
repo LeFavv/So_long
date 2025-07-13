@@ -6,7 +6,7 @@
 #    By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/13 18:13:53 by vafavard          #+#    #+#              #
-#    Updated: 2025/07/13 12:54:07 by vafavard         ###   ########.fr        #
+#    Updated: 2025/07/13 14:04:46 by vafavard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra
 SRC_PATH = sources/
 BONUS_PATH = sources/bonus_sources/
+MLX_PATH = minilibx-linux/
 
 BONUS_FILES = check_map_bonus.c collectibles_bonus.c get_next_line_bonus.c get_next_line_utils_bonus.c\
 			 keyhook_bonus.c player_bonus.c so_long_bonus.c utils_bonus.c check_map_2_bonus.c\
@@ -39,13 +40,16 @@ all: $(NAME)
 $(PRINTF_ARCHIVE):
 	$(MAKE) -C $(PRINTF_PATH)
 
-$(NAME): $(OBJS) $(PRINTF_ARCHIVE)
-	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(PRINTF_ARCHIVE) -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz -o $(NAME)
+mlx:
+	$(MAKE) -C $(MLX_PATH)
+
+$(NAME): $(OBJS) $(PRINTF_ARCHIVE) mlx
+	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(PRINTF_ARCHIVE) -Lminilibx-linux -lmlx -L/usr/lib -Iminilibx-linux -lXext -lX11 -lm -lz -o $(NAME)
 
 bonus: $(NAME_BONUS)
 
 $(NAME_BONUS): $(BONUS_OBJS) $(PRINTF_ARCHIVE)
-	$(CC) $(CFLAGS) $(INCLUDES) $(BONUS_OBJS) $(PRINTF_ARCHIVE) -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz -o $(NAME_BONUS)
+	$(CC) $(CFLAGS) $(INCLUDES) $(BONUS_OBJS) $(PRINTF_ARCHIVE) -Lminilibx-linux -lmlx -L/usr/lib -Iminilibx-linux -lXext -lX11 -lm -lz -o $(NAME_BONUS)
 
 %.o: %.c
 	@echo "Compiling $<"
@@ -54,11 +58,13 @@ $(NAME_BONUS): $(BONUS_OBJS) $(PRINTF_ARCHIVE)
 clean:
 	$(MAKE) -C $(PRINTF_PATH) clean
 	rm -f $(OBJS) $(BONUS_OBJS)
+	$(MAKE) -C $(MLX_PATH) clean
 
 fclean: clean
 	$(MAKE) -C $(PRINTF_PATH) fclean
 	rm -f $(NAME) $(NAME_BONUS)
+	$(MAKE) -C $(MLX_PATH) clean
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re bonus mlx
