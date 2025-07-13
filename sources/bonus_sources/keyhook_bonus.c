@@ -6,16 +6,16 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 03:08:20 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/09 13:59:34 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/13 11:35:14 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int key_hook(int keycode, t_game *game)
+int	key_hook(int keycode, t_game *game)
 {
-	if (keycode == 65307) //ESC
-	   end_game(game, "Vous avez decider de quitter le jeu\n", 0);
+	if (keycode == 65307)
+		end_game(game, "Vous avez decider de quitter le jeu\n", 0);
 	else if (keycode == 's')
 		move_player(game, 1, 0);
 	else if (keycode == 'w')
@@ -24,7 +24,7 @@ int key_hook(int keycode, t_game *game)
 		move_player(game, 0, 1);
 	else if (keycode == 'a')
 		move_player(game, 0, -1);
-	return(0);
+	return (0);
 }
 
 void	destroy_image(t_game *game)
@@ -70,7 +70,7 @@ void	destroy_image_bonus(t_game *game)
 	if (game->tex_bonus.villain_image)
 		mlx_destroy_image(game->mlx, game->tex_bonus.villain_image);
 }
-//detruire images bonus
+
 int	end_game(t_game *game, char *msg, int exit_code)
 {
 	if (game)
@@ -99,7 +99,7 @@ int	exit_game(t_game *game)
 		if (game->map)
 		{
 			free_map(game->map);
-			game->map = NULL;	
+			game->map = NULL;
 		}
 		destroy_image(game);
 		destroy_image_bonus(game);
@@ -117,4 +117,3 @@ int	exit_game(t_game *game)
 	}
 	exit(0);
 }
-

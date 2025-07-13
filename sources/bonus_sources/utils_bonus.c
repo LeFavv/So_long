@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:27:50 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/12 22:30:02 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/13 11:46:17 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,8 @@ char	**dup_map(char **map)
 		dup[i] = ft_strdup(map[i]);
 		if (!dup[i])
 		{
-			while (i >= 0)
-			{
+			while (i-- >= 0)
 				free(dup[i]);
-				i--;
-			}
 			free(dup);
 		}
 		i++;

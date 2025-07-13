@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:26:15 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/12 22:29:49 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/13 11:42:24 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ int	main(int argc, char **argv)
 		return (end_game(game, "Error\n", 1), 1);
 	if (!error_check(game->map, argv[1], game))
 		return (1);
-	game->win = mlx_new_window(game->mlx, game->win_width , game->win_height, "So Long");
+	game->win = mlx_new_window(game->mlx, game->win_width,
+			game->win_height, "So Long");
 	init_image(game);
 	init_image_bonus(game);
 	render_map(game);

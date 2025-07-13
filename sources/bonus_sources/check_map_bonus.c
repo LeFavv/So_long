@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:43:25 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/12 22:34:52 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/13 11:18:09 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,13 @@ int	nb_line(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		return (-1);
-	while ((line = get_next_line(fd)))
+	line = get_next_line(fd);
+	while (line)
 	{
 		free(line);
 		count++;
+		line = get_next_line(fd);
 	}
-	// line = get_next_line(fd);
-	// while (line)
-	// {
-	// 	free(line);
-	// 	count++;
-	// 	line = get_next_line(fd);
-	// }
 	close(fd);
 	return (count);
 }
@@ -61,26 +56,21 @@ char	**load_map(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		return (NULL);
-	while ((line = get_next_line(fd)))
+	line = get_next_line(fd);
+	while (line)
 	{
 		map[i] = line;
+		line = get_next_line(fd);
 		i++;
 	}
-	// line = get_next_line(fd);
-	// while (line)
-	// {
-	// 	map[i] = line;
-	// 	line = get_next_line(fd);
-	// 	i++;
-	// }
 	map[i] = NULL;
-	close(fd);
-	return (map);
+	return (close(fd), map);
 }
 
 void	free_map(char **map)
 {
 	int	i;
+
 	i = 0;
 	while (map[i])
 	{

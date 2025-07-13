@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 00:57:20 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/13 01:17:19 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/13 11:33:09 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ void	ft_put_image_number_z_to_f(t_game *game, int index, int j);
 
 void	render_map(t_game *game)
 {
-	int x;
-	int y;
-	
+	int	x;
+	int	y;
+
 	y = 0;
 	while (game->map[y])
 	{
 		x = 0;
-		while(game->map[y][x])
+		while (game->map[y][x])
 		{
 			if (game->map[y][x] == '1')
 				ft_put_image(game, 0, y, x);
@@ -63,7 +63,7 @@ void	render_map_bonus(t_game *game)
 		mlx_put_image_to_window(game->mlx, game->win,
 			game->tex_bonus.heart, 0 * TILE_SIZE, 0 * TILE_SIZE);
 		mlx_put_image_to_window(game->mlx,
-			game->win, game->tex_bonus.heart, 1 * TILE_SIZE, 0 * TILE_SIZE);	
+			game->win, game->tex_bonus.heart, 1 * TILE_SIZE, 0 * TILE_SIZE);
 	}
 	else if (game->nb_lives == 1)
 	{
@@ -96,7 +96,7 @@ void	ft_put_image(t_game *game, int index, int y, int x)
 
 void	render_map_number_move_bonus(t_game *game, char *str, int i, int j)
 {
-	int index;
+	int	index;
 
 	i = 0;
 	j = 5;
@@ -113,12 +113,12 @@ void	render_map_number_move_bonus(t_game *game, char *str, int i, int j)
 void	ft_put_image_number_z_to_f(t_game *game, int index, int j)
 {
 	if (index == 0)
-		mlx_put_image_to_window(game->mlx, game->win,game->tex_bonus.zero, 
+		mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.zero,
 			(game->map_width - j) * TILE_SIZE, game->map_height * TILE_SIZE);
 	else if (index == 1)
 		mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.one,
 			(game->map_width - j) * TILE_SIZE, game->map_height * TILE_SIZE);
-	else if (index == 2)		
+	else if (index == 2)
 		mlx_put_image_to_window(game->mlx, game->win, game->tex_bonus.two,
 			(game->map_width - j) * TILE_SIZE, game->map_height * TILE_SIZE);
 	else if (index == 3)

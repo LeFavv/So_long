@@ -6,7 +6,7 @@
 #    By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/13 18:13:53 by vafavard          #+#    #+#              #
-#    Updated: 2025/07/09 11:11:34 by vafavard         ###   ########.fr        #
+#    Updated: 2025/07/13 11:12:12 by vafavard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,9 @@ SRC_PATH = sources/
 BONUS_PATH = sources/bonus_sources/
 
 BONUS_FILES = check_map_bonus.c collectibles_bonus.c get_next_line_bonus.c get_next_line_utils_bonus.c\
-			image_bonus.c keyhook_bonus.c player_bonus.c so_long_bonus.c utils_bonus.c check_map_2_bonus.c\
-			 check_map_3_bonus.c init_bonus.c itoa_bonus.c
+			 keyhook_bonus.c player_bonus.c so_long_bonus.c utils_bonus.c check_map_2_bonus.c\
+			 check_map_3_bonus.c init_bonus.c itoa_bonus.c  image_bonus_new_version.c image_bonus_new_version_2.c\
+			 get_image_bonus_1.c get_image_bonus_2.c get_image_bonus_3.c get_image_bonus_4.c
 
 
 SRC_FILES = check_map.c collectibles.c get_next_line.c get_next_line_utils.c\

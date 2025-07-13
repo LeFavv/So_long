@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:28:26 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/10 21:06:15 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/13 10:48:25 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,9 +114,15 @@ int		check_command_line_params(int argc, char **argv);
 void	remove_newline(char *line);
 
 //bonus
-void	render_map_bonus(t_game *game);
-void	render_map_number_move_bonus(t_game *game, char *str, int i, int j);
+void	ft_put_image_number_six_to_nine(t_game *game, int index, int j);
+void	init_image(t_game *game);
 void	init_image_bonus(t_game *game);
+int    set_map_width_height(t_game *game);
+void	render_map(t_game *game);
+void	render_map_bonus(t_game *game);
+void	ft_put_image(t_game *game, int index, int y, int x);
+void	render_map_number_move_bonus(t_game *game, char *str, int i, int j);
+void	ft_put_image_number_z_to_f(t_game *game, int index, int j);
 char	*ft_itoa_bonus(int nb);
 int		update(void *param);
 void    ft_get_img_floor(t_game *game);

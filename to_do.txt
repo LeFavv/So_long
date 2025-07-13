@@ -1,3 +1,2 @@
-Bien check chaque image
-Tout norme 
-check les possibles erreurs
+Ajuster pour les non bonus
+Enlever les printf

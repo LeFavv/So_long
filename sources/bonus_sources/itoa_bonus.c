@@ -6,31 +6,31 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 03:35:16 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/09 03:58:15 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/13 11:19:09 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 
-char *ft_itoa_bonus(int nb)
+char	*ft_itoa_bonus(int nb)
 {
-    int i;
+	int		i;
+	char	*result;
 
-    i = 0;
-    char *result;
-    result = malloc(sizeof(char) * 5);
-    if (!result)
-        return (NULL);
-    result[0] = '0';
-    result[1] = '0';
-    result[2] = '0';
-    result[3] = '0';
-    result[4] = '\0';
-    while (nb)
-    {
-        result[3 - i] = nb % 10 + '0';
-        nb /= 10;
-        i++;
-    }
-    return (result);
+	i = 0;
+	result = malloc(sizeof(char) * 5);
+	if (!result)
+		return (NULL);
+	result[0] = '0';
+	result[1] = '0';
+	result[2] = '0';
+	result[3] = '0';
+	result[4] = '\0';
+	while (nb)
+	{
+		result[3 - i] = nb % 10 + '0';
+		nb /= 10;
+		i++;
+	}
+	return (result);
 }
