@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:26:15 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/13 12:59:36 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/15 10:17:52 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,53 @@ int	check_command_line_params(int argc, char **argv)
 	return (1);
 }
 
+// int	main(int argc, char **argv)
+// {
+// 	t_game	*game;
+
+// 	game = malloc(sizeof(t_game));
+// 	if (!game)
+// 		return (ft_printf("Error\nMalloc failed\n", 1));
+// 	init_game(game);
+// 	game->mlx = mlx_init();
+// 	if (check_command_line_params(argc, argv))
+// 		game->map = load_map(argv[1]);
+// 	if (!game->map || !game->map[0])
+// 		end_game(game, "Error\nMap NULL\n", 1);
+// 	else
+// 		return (end_game(game, "Error\n", 1), 1);
+// 	if (!error_check(game->map, argv[1], game))
+// 		return (1);
+// 	game->win = mlx_new_window(game->mlx, game->win_width,
+// 			game->win_height, "So Long");
+// 	init_image(game);
+// 	render_map(game);
+// 	mlx_key_hook(game->win, key_hook, game);
+// 	mlx_hook(game->win, 17, 0, exit_game, game);
+// 	mlx_loop(game->mlx);
+// }
 int	main(int argc, char **argv)
 {
 	t_game	*game;
-
+	
 	game = malloc(sizeof(t_game));
+	if (!game)
+		return (ft_printf("Error\nMalloc failed\n"), 1);
 	init_game(game);
 	game->mlx = mlx_init();
-	if (check_command_line_params(argc, argv))
-		game->map = load_map(argv[1]);
-	else
-		return (end_game(game, "Error\n", 1), 1);
+	if (!game->mlx)
+		return (end_game(game, "Error\nmlx_init failed\n", 1), 1);
+	if (!check_command_line_params(argc, argv))
+		return (end_game(game, "Error\nInvalid arguments\n", 1), 1);
+	game->map = load_map(argv[1]);
+	if (!game->map || !game->map[0])
+		return (end_game(game, "Error\nMap NULL\n", 1), 1);
 	if (!error_check(game->map, argv[1], game))
-		return (1);
+		return (end_game(game, "Error\nInvalid map\n", 1), 1);
 	game->win = mlx_new_window(game->mlx, game->win_width,
 			game->win_height, "So Long");
+	if (!game->win)
+		return (end_game(game, "Error\nmlx_new_window failed\n", 1), 1);
 	init_image(game);
 	render_map(game);
 	mlx_key_hook(game->win, key_hook, game);

@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 00:57:20 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/13 11:33:09 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/15 10:22:26 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ void	render_map(t_game *game)
 			x++;
 		}
 		y++;
-	}	
+	}
+	render_map_bonus(game);
 }
 
 void	render_map_bonus(t_game *game)

@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 01:00:22 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/13 11:31:19 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/15 10:23:16 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	init_image(t_game *game)
 	ft_get_img_floor(game);
 	ft_get_img_player(game);
 	ft_get_img_wall(game);
+	init_image_bonus(game);
 }
 
 void	init_image_bonus(t_game *game)
