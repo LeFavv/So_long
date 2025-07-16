@@ -6,28 +6,28 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:31:12 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/13 12:00:05 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/16 12:16:45 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int		check_sides(char **map);
+int		check_sides(char **map, t_game *game);
 int		check_name(char *file);
 int		check_valide_cases(char **map, t_game *game);
 void	flood_fill(t_game *game, int player_y, int player_x);
 int		check_flood_fill(t_game *game);
 
-int	check_sides(char **map)
+int	check_sides(char **map, t_game *game)
 {
 	int	i;
 	int	len;
 
-	i = 0;
+	i = 1;
 	len = ft_strlen(map[i]);
-	while (map[i])
+	while (i < game->map_height)
 	{
-		if (map[i][0] != '1' && map[i][len] != '1')
+		if (!(map[i][0] == '1' && map[i][len - 2] == '1'))
 			return (0);
 		i++;
 	}
@@ -41,15 +41,16 @@ int	check_name(char *file)
 
 	valide = 0;
 	i = 0;
-	while (file[i])
+	while (file[i] != '.')
 		i++;
-	if (file[i - 1] == 'r')
+	i++;
+	if (file[i] == 'b')
 		valide += 1;
-	if (file[i - 2] == 'e')
+	if (file[i + 1] == 'e')
 		valide += 1;
-	if (file[i - 3] == 'b')
+	if (file[i + 2] == 'r')
 		valide += 1;
-	if (file[i - 4] == '.')
+	if (file[i + 3] == '\0')
 		valide += 1;
 	if (valide == 4)
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 01:00:22 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/16 09:19:59 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/16 15:59:23 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	set_map_width_height(t_game *game)
 	count_collectibles(game);
 	while (game->map[0][width])
 		width++;
+	width -= 1;
 	while (game->map[height])
 		height++;
 	if (height > MAX_HEIGHT || width > MAX_WIDTH)

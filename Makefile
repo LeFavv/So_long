@@ -6,7 +6,7 @@
 #    By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/13 18:13:53 by vafavard          #+#    #+#              #
-#    Updated: 2025/07/13 15:45:53 by vafavard         ###   ########.fr        #
+#    Updated: 2025/07/16 12:03:07 by vafavard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,8 @@ CFLAGS = -Wall -Werror -Wextra
 SRC_PATH = sources/
 BONUS_PATH = sources/bonus_sources/
 MLX_PATH = minilibx-linux/
+MLX_LIB = libmlx.a
+MLX = $(MLX_PATH)$(MLX_LIB)
 
 BONUS_FILES = check_map_bonus.c collectibles_bonus.c get_next_line_bonus.c get_next_line_utils_bonus.c\
 			 keyhook_bonus.c player_bonus.c so_long_bonus.c utils_bonus.c check_map_2_bonus.c\
@@ -40,15 +42,15 @@ all: $(NAME)
 $(PRINTF_ARCHIVE):
 	$(MAKE) -C $(PRINTF_PATH)
 
-mlx:
+$(MLX):
 	$(MAKE) -C $(MLX_PATH)
 
-$(NAME): $(OBJS) $(PRINTF_ARCHIVE) mlx
+$(NAME): $(OBJS) $(PRINTF_ARCHIVE) $(MLX)
 	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(PRINTF_ARCHIVE) -Lminilibx-linux -lmlx -L/usr/lib -Iminilibx-linux -lXext -lX11 -lm -lz -o $(NAME)
 
 bonus: $(NAME_BONUS)
 
-$(NAME_BONUS): $(BONUS_OBJS) $(PRINTF_ARCHIVE) mlx
+$(NAME_BONUS): $(BONUS_OBJS) $(PRINTF_ARCHIVE) $(MLX)
 	$(CC) $(CFLAGS) $(INCLUDES) $(BONUS_OBJS) $(PRINTF_ARCHIVE) -Lminilibx-linux -lmlx -L/usr/lib -Iminilibx-linux -lXext -lX11 -lm -lz -o $(NAME_BONUS)
 
 %.o: %.c

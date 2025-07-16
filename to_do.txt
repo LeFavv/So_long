@@ -1,2 +1,0 @@
-Ajuster pour les non bonus
-Enlever les printf

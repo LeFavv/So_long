@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:26:15 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/16 09:20:14 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/16 13:35:56 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int	main(int argc, char **argv)
 {
 	t_game	*game;
 
+	if (!check_command_line_params(argc, argv))
+		exit (1);
 	game = malloc(sizeof(t_game));
 	if (!game)
 		return (ft_printf("Error\nMalloc failed\n"), 1);
@@ -43,8 +45,6 @@ int	main(int argc, char **argv)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		return (end_game(game, "Error\nmlx_init failed\n", 1), 1);
-	if (!check_command_line_params(argc, argv))
-		return (end_game(game, "Error\nInvalid arguments\n", 1), 1);
 	game->map = load_map(argv[1]);
 	if (!game->map || !game->map[0])
 		return (end_game(game, "Error\nMap NULL\n", 1), 1);

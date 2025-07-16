@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:31:15 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/10 21:01:59 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/16 13:36:40 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,20 +78,20 @@ int	error_check(char **tab, char *file, t_game *game)
 {
 	game->dup_map = dup_map(tab);
 	find_player(game);
-	flood_fill(game, game->player_y, game->player_x);
-	if (!check_sides(tab) || !check_top_bot(tab, file, game))
+	if (!set_map_width_height(game))
+		end_game(game, "Error\nMax Width 40 chars\nMax Height 21 chars\n", 1);
+	else if (!check_top_bot(tab, file, game) || !check_sides(tab, game))
 		end_game(game, "Error\nOnly 1 (walls) on each sides\n", 1);
 	else if (!check_rectangle(tab))
 		end_game(game, "Error\nThe map must be a rectangle\n", 1);
 	else if (!check_valide_cases(tab, game))
-		end_game(game, "Error\nMap= 0,1,V,only one P and E and one C min\n", 1);
-	else if (!check_flood_fill(game))
-		end_game(game, "Error\nNo Valid path to success\n", 1);
+		end_game(game, "Error\nMap= 0,1,only one P and E and one C min\n", 1);
 	else if (!check_exit_number(tab))
 		end_game(game, "Error\nYou need to have only one Exit in ur map\n", 1);
 	else if (!game->map)
 		end_game(game, "Error\nThe map load failed\n", 1);
-	else if (!set_map_width_height(game))
-		end_game(game, "Error\nMax Width 40 chars\nMax Height 21 chars\n", 1);
+	flood_fill(game, game->player_y, game->player_x);
+	if (!check_flood_fill(game))
+		end_game(game, "Error\nNo Valid path to success\n", 1);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:28:26 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/16 09:18:07 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/16 11:13:12 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ char	**load_map(char *file);
 void	free_map(char **map);
 int		check_rectangle(char **map);
 int		check_top_bot(char **map, char *file, t_game *game);
-int		check_sides(char **map);
+int		check_sides(char **map, t_game *game);
 int		check_name(char *file);
 int		check_valide_cases(char **map, t_game *game);
 void	flood_fill(t_game *game, int player_y, int player_x);
