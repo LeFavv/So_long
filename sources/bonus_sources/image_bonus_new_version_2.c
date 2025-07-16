@@ -6,14 +6,14 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 01:00:22 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/15 10:23:16 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/16 09:19:59 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 void	ft_put_image_number_six_to_nine(t_game *game, int index, int j);
-void	init_image(t_game *game);
+int		init_image(t_game *game);
 void	init_image_bonus(t_game *game);
 int		set_map_width_height(t_game *game);
 
@@ -33,7 +33,7 @@ void	ft_put_image_number_six_to_nine(t_game *game, int index, int j)
 			(game->map_width - j) * TILE_SIZE, game->map_height * TILE_SIZE);
 }
 
-void	init_image(t_game *game)
+int	init_image(t_game *game)
 {
 	ft_get_img_collectibles(game);
 	ft_get_img_exit(game);
@@ -41,6 +41,7 @@ void	init_image(t_game *game)
 	ft_get_img_player(game);
 	ft_get_img_wall(game);
 	init_image_bonus(game);
+	return (1);
 }
 
 void	init_image_bonus(t_game *game)

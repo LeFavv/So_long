@@ -6,18 +6,18 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 03:37:08 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/13 12:42:13 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/16 09:15:37 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	init_image(t_game *game);
+void	init_image_1(t_game *game);
 int		set_map_width_height(t_game *game);
 void	render_map(t_game *game);
 void	ft_put_image(t_game *game, int index, int y, int x);
 
-void	init_image(t_game *game)
+void	init_image_1(t_game *game)
 {
 	ft_get_img_floor(game);
 	ft_get_img_collectibles(game);

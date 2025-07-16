@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:28:26 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/13 15:39:40 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/16 09:18:07 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	count_collectibles(t_game *game);
 
 //image
 void	render_map(t_game *game);
-void	init_image(t_game *game);
+void	init_image_1(t_game *game);
 int		set_map_width_height(t_game *game);
 void	ft_get_img_floor(t_game *game);
 void	ft_get_img_collectibles(t_game *game);
@@ -124,7 +124,7 @@ void	remove_newline(char *line);
 
 //bonus
 void	ft_put_image_number_six_to_nine(t_game *game, int index, int j);
-void	init_image(t_game *game);
+int		init_image(t_game *game);
 void	init_image_bonus(t_game *game);
 int		set_map_width_height(t_game *game);
 void	render_map(t_game *game);

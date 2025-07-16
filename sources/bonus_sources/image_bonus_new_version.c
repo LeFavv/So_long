@@ -6,7 +6,7 @@
 /*   By: vafavard <vafavard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 00:57:20 by vafavard          #+#    #+#             */
-/*   Updated: 2025/07/15 10:22:26 by vafavard         ###   ########.fr       */
+/*   Updated: 2025/07/16 09:22:18 by vafavard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	render_map(t_game *game)
 	y = 0;
 	while (game->map[y])
 	{
-		x = 0;
-		while (game->map[y][x])
+		x = -1;
+		while (game->map[y][++x])
 		{
 			if (game->map[y][x] == '1')
 				ft_put_image(game, 0, y, x);
@@ -41,7 +41,6 @@ void	render_map(t_game *game)
 				ft_put_image(game, 4, y, x);
 			else if (game->map[y][x] == 'V')
 				ft_put_image(game, 5, y, x);
-			x++;
 		}
 		y++;
 	}
